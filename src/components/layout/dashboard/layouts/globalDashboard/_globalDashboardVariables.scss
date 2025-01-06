@@ -1,0 +1,9 @@
+@use '../../../../../styles/shared/partials/colors/tintsAndShades';
+
+$globalDashboardLeftPanelBg: #{tintsAndShades.$neutral-95} !default;
+$globalDashboardLeftDivider: 1px solid #{tintsAndShades.$neutral-70} !default;
+
+@mixin globalDashboardVariables {
+  --globalDashboardLeftPanelBg: #{$globalDashboardLeftPanelBg};
+  --globalDashboardLeftDivider: #{$globalDashboardLeftDivider};
+}

@@ -1,0 +1,24 @@
+@use "../../shared/partials/typography/fonts/catalogue.font";
+
+$icomoon-font-path: "/fonts";
+$headingFont: "Catalogue", "Arial", "Helvetica", sans-serif;
+$bodyFont: "Catalogue", "Arial", "Helvetica", sans-serif;
+$bodyBg: #000;
+$bodyFgColor: #fff;
+
+$scrollBarFgColor: #999;
+$scrollBarBgColor: #333;
+
+::-webkit-scrollbar-track {
+  box-shadow: 1px 1px 3px inset #45f5a5;
+}
+
+$pageContainerBg: #000;
+
+$mainHeaderBg: #000;
+$mainHeaderFgColor: #fff;
+$mainHeaderBorderBottom: 1px solid #e70077;
+$mainHeaderBoxShadow: 0 3px 5px 0 #e70077 !default;
+
+$mainContentBg: #000;
+$mainContentFgColor: #fff;

@@ -1,0 +1,92 @@
+{
+  "cba": {
+    "buildPath": "styles/themes/cba",
+    "dev": {
+      "css": "cba.css",
+      "map": "cba.css.map"
+    },
+    "min": {
+      "css": "cba.min.css",
+      "map": "cba.min.css.map"
+    },
+    "versioned": {
+      "css": "cba.min.0.2.0.css",
+      "map": "cba.min.0.2.0.css.map"
+    }
+  },
+  "creditSavvy": {
+    "buildPath": "styles/themes/creditSavvy",
+    "dev": {
+      "css": "creditSavvy.css",
+      "map": "creditSavvy.css.map"
+    },
+    "min": {
+      "css": "creditSavvy.min.css",
+      "map": "creditSavvy.min.css.map"
+    },
+    "versioned": {
+      "css": "creditSavvy.min.0.2.0.css",
+      "map": "creditSavvy.min.0.2.0.css.map"
+    }
+  },
+  "doshii": {
+    "buildPath": "styles/themes/doshii",
+    "dev": {
+      "css": "doshii.css",
+      "map": "doshii.css.map"
+    },
+    "min": {
+      "css": "doshii.min.css",
+      "map": "doshii.min.css.map"
+    },
+    "versioned": {
+      "css": "doshii.min.0.2.0.css",
+      "map": "doshii.min.0.2.0.css.map"
+    }
+  },
+  "monochrome": {
+    "buildPath": "styles/themes/monochrome",
+    "dev": {
+      "css": "monochrome.css",
+      "map": "monochrome.css.map"
+    },
+    "min": {
+      "css": "monochrome.min.css",
+      "map": "monochrome.min.css.map"
+    },
+    "versioned": {
+      "css": "monochrome.min.0.2.0.css",
+      "map": "monochrome.min.0.2.0.css.map"
+    }
+  },
+  "x15Core": {
+    "buildPath": "styles/themes/x15Core",
+    "dev": {
+      "css": "x15Core.css",
+      "map": "x15Core.css.map"
+    },
+    "min": {
+      "css": "x15Core.min.css",
+      "map": "x15Core.min.css.map"
+    },
+    "versioned": {
+      "css": "x15Core.min.0.2.0.css",
+      "map": "x15Core.min.0.2.0.css.map"
+    }
+  },
+  "x15CoreDark": {
+    "buildPath": "styles/themes/x15CoreDark",
+    "dev": {
+      "css": "x15CoreDark.css",
+      "map": "x15CoreDark.css.map"
+    },
+    "min": {
+      "css": "x15CoreDark.min.css",
+      "map": "x15CoreDark.min.css.map"
+    },
+    "versioned": {
+      "css": "x15CoreDark.min.0.2.0.css",
+      "map": "x15CoreDark.min.0.2.0.css.map"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@use 'sass:color';
+
+// Main theme colours
+// Note the brand pink is #ec008c but this is not accessible with white and looks awful with black
+
+$buttonTransition: background-color 0.4s ease !default;
+$primaryButtonBg: #469da0 !default;
+$secondaryButtonBg: #bfdede !default;
+$tertiaryButtonBg: #757a7e !default;
+
+$baseTextColor: #222 !default;
+$inverseTextColor: #fff !default;
+
+$baseTint: #fff !default;
+$inverseTint: #000 !default;
+
+$palette1: #469da0 !default;
+$palette2: #3a4147 !default;
+
+$palette1_900: color.adjust($palette1, $lightness: -45%) !default;
+$palette1_800: color.adjust($palette1, $lightness: -35%) !default;
+$palette1_700: color.adjust($palette1, $lightness: -25%) !default;
+$palette1_600: color.adjust($palette1, $lightness: -15%) !default;
+$palette1_500: $palette1 !default;
+$palette1_400: color.adjust($palette1, $lightness: 15%) !default;
+$palette1_300: color.adjust($palette1, $lightness: 25%) !default;
+$palette1_200: color.adjust($palette1, $lightness: 35%) !default;
+$palette1_100: color.adjust($palette1, $lightness: 45%) !default;
+$palette1_50:  color.adjust($palette1, $lightness: 47%) !default;
+
+$palette2_900: color.adjust($palette2, $lightness: -45%) !default;
+$palette2_800: color.adjust($palette2, $lightness: -35%) !default;
+$palette2_700: color.adjust($palette2, $lightness: -25%) !default;
+$palette2_600: color.adjust($palette2, $lightness: -15%) !default;
+$palette2_500: $palette2 !default;
+$palette2_400: color.adjust($palette2, $lightness: 15%) !default;
+$palette2_300: color.adjust($palette2, $lightness: 25%) !default;
+$palette2_200: color.adjust($palette2, $lightness: 35%) !default;
+$palette2_100: color.adjust($palette2, $lightness: 45%) !default;
+$palette2_50:  color.adjust($palette2, $lightness: 47%) !default;

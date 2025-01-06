@@ -1,0 +1,58 @@
+$cbaFontsPath: '/fonts';
+
+@font-face {
+  font-family: "CBABeaconSans";
+  font-weight: 400;
+  src:
+          url('#{$cbaFontsPath}/CBABeaconSans-Regular.woff2') format("woff2"),
+          url('#{$cbaFontsPath}/CBABeaconSans-Regular.woff') format("woff"),
+          url('#{$cbaFontsPath}/CBABeaconSans-Regular.ttf') format("ttf");
+}
+
+@font-face {
+  font-family: "CBABeaconSans";
+  font-style: italic;
+  font-weight: 400;
+  src:
+          url('#{$cbaFontsPath}/CBABeaconSans-Italic.woff2') format("woff2"),
+          url('#{$cbaFontsPath}/CBABeaconSans-Italic.woff') format("woff"),
+          url('#{$cbaFontsPath}/CBABeaconSans-Italic.ttf') format("ttf");
+}
+
+@font-face {
+  font-family: "CBABeaconSans";
+  font-weight: 700;
+  src:
+          url('#{$cbaFontsPath}/CBABeaconSans-Bold.woff2') format("woff2"),
+          url('#{$cbaFontsPath}/CBABeaconSans-Bold.woff') format("woff"),
+          url('#{$cbaFontsPath}/CBABeaconSans-Bold.ttf') format("ttf");
+}
+
+@font-face {
+  font-family: "CBABeaconSans";
+  font-style: italic;
+  font-weight: 700;
+  src:
+          url('#{$cbaFontsPath}/CBABeaconSans-BoldItalic.woff2') format("woff2"),
+          url('#{$cbaFontsPath}/CBABeaconSans-BoldItalic.woff') format("woff"),
+          url('#{$cbaFontsPath}/CBABeaconSans-BoldItalic.ttf') format("ttf");
+}
+
+@font-face {
+  font-family: "CBABeaconSans";
+  font-weight: 800;
+  src:
+          url('#{$cbaFontsPath}/CBABeaconSans-ExtraBold.woff2') format("woff2"),
+          url('#{$cbaFontsPath}/CBABeaconSans-ExtraBold.woff') format("woff"),
+          url('#{$cbaFontsPath}/CBABeaconSans-ExtraBold.ttf') format("ttf");
+}
+
+@font-face {
+  font-family: "CBABeaconSans";
+  font-style: italic;
+  font-weight: 800;
+  src:
+          url('#{$cbaFontsPath}/CBABeaconSans-ExtraBoldItalic.woff2') format("woff2"),
+          url('#{$cbaFontsPath}/CBABeaconSans-ExtraBoldItalic.woff') format("woff"),
+          url('#{$cbaFontsPath}/CBABeaconSans-ExtraBoldItalic.ttf') format("ttf");
+}

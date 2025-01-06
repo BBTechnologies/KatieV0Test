@@ -1,0 +1,92 @@
+@use 'globalDashboardVariables';
+@use '../../../../../styles/shared/utilities/mixins';
+
+.globalDashboard {
+  min-height: 100vh;
+
+  .sidePanelPosition_left,
+  .sidePanelPosition_right {
+    top: calc(var(--mainHeaderHeight) + 1px);
+  }
+
+  &.withRightToolbar {
+    #dashboardRightPanel {
+      margin-right: 45px;
+    }
+
+    .mainHeader {
+      width: calc(100% - 45px);
+    }
+
+    main {
+      margin-right: 45px;
+    }
+  }
+
+  #dashboardLeftPanel {
+    z-index: 20;
+    background: var(--globalDashboardLeftPanelBg);
+    .sidePanelClose {
+      background: inherit;
+    }
+    footer {
+      box-sizing: border-box;
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 0;
+      border-top: var(--globalDashboardLeftDivider);
+      .versionText {
+        font-size: 11px;
+        line-height: 30px;
+        text-align: right;
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+
+  #dashboardToolbar {
+    top: 0;
+    z-index: 20;
+  }
+
+  .mainHeader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 12;
+    padding: 0;
+
+    header {
+      width: 100%;
+
+      .ventureLogos {
+        min-width: var(--sidePanelSizeMedium);
+        white-space: nowrap;
+        padding-left: 20px;
+        box-sizing: border-box;
+      }
+
+      .search_Field {
+        width: 250px;
+      }
+    }
+  }
+
+  main {
+    box-sizing: border-box;
+    border-top: calc(var(--mainHeaderHeight) + 1px) solid transparent;
+    min-height: calc(100vh - var(--mainHeaderHeight));
+
+    h2, h3 {
+      margin-bottom: 20px;
+    }
+
+    .cardsGrid {
+      @include mixins.rowLayout($gap: 20px);
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+  }
+}

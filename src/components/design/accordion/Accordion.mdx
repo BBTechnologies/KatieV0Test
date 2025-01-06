@@ -1,0 +1,103 @@
+import { Meta, ArgTypes } from '@storybook/blocks';
+import { Accordion } from './Accordion';
+
+<Meta
+  title="Components/Accordion/Implementation details"
+  component={Accordion}
+  parameters={{ options: { showPanel: false } }}
+/>
+
+# Accordions
+An accordion is a vertically stacked group of collapsible sections. An accordion is composed of grouped buttons and panels. When a user selects an accordion button, its corresponding panel should switch between 'open' and 'collapsed' states.
+
+## Notes about implementation
+Native HTML elements have been used where possible, such as ```<button/>``` for accordion headers, since they are inherently accessible.
+
+To make the full accordion component accessible and compliant with the Web Content Accessibility Guidelines (WCAG), several requirements and ARIA (Accessible Rich Internet Applications) attributes need to be implemented.
+This accordion component is based on the [ReactUI Accordion](https://reach.tech/accordion/) and below is a summary of how it meets the criteria.
+
+At the moment the component has been quite opinionated in using an h3 tag for the heading element rather than option for a non-semantic element with ```role="heading"``` instead.
+This follows the libraries default position of always using a semantic element if there is one available instead of repurposing other elements using aria tags.
+
+Headings (h2-h6) are typically used to represent increasing degrees of indentation and form a conceptual outline of the content. Depending on where the accordion is used within the dom structure, this may created an unexpected headings structure.
+
+H3 has deliberately been chosen to minimise the likelihood of this as there should only ever be one h1 tag, this is typically the name of the application and sits in the main header.
+This is usually accompanied by an H2 that represents the title of the specific screen or feature. Thus, an H3 is a relatively safe choice to not cause a header hierarchy issue.
+Note: Header hierarchy is not mandated in WCAG. The closest criterion is 2.4.10 which relates to section headings and is an AAA criterion.
+
+
+### WCAG Requirement: Perceivable
+The button that opens and closes the accordion has a text label that conveys its purpose including the screen reader instruction below. (WCAG 1.1.1)
+```<span className="sr-only">Open and close accordion</span>```
+
+The start of the content also includes a screen reader message;
+```<span className="sr-only">Start of accordion content</span>```
+
+The header and content both have ```tabIndex={ 0 }``` to allow keyboard focus. They both have clear focus outlines when in a focused state. (WCAG 2.4.7)
+
+##### Keyboard navigation:
+The accordion can be opened, closed, and navigated via keyboard (WCAG 2.1.1).
+Tab will navigate between accordion headers. Enter or Space on the header will toggle (expand/collapse) the accordion panels.
+
+The library currently does not have a multi-accordion component.
+Note: If you wish to use multiple accordions grouped together it will be necessary to also support arrow key navigation between the accordion headers. (WCAG 2.1.2)
+
+### WCAG Requirement: Understandable
+The heading property is a required property. This ensures the accordion has a clear heading that describes its purpose (WCAG 3.3.2).
+
+The expand/collapse functionality behaves consistently (WCAG 3.2.3)
+
+There are descriptive labels for screen readers within the header and content, so users understand the purpose and contents of each section (WCAG 3.3.2).
+
+#### ARIA Attributes
+Header
+- ```aria-expanded"``` - indicates if the content is open or closed.
+- ```aria-controls``` - points at the content element.
+
+Content panel
+- ```role="region"``` - denotes a grouping of content.
+- ```aria-labelledby``` - points at the header element.
+
+A very basic example of an accordion is below.
+```
+<Accordion
+  footer="This is a footer"
+  heading="This is the heading"
+>
+  <div>
+    This is the content
+  </div>
+</Accordion>
+```
+<ArgTypes of={Accordion} />
+
+It creates the following dom elements;
+
+```
+<section class="accordion open">
+  <header class="accordionHeader">
+    <h3>
+      <button
+        aria-controls="accordion_1729829730274_content"
+        aria-expanded="true"
+        id="accordion_1729829730274_control"
+        type="button"
+        class="accordionControl">
+
+        <span class="sr-only">Open and close accordion</span>
+        <span class="labelText">This is the heading</span>
+        <i class="icon icon-circle-up" role="presentation" aria-hidden="true"></i>
+      </button>
+    </h3>
+  </header>
+  <section
+    tabindex="0"
+    class="accordionContent"
+    id="accordion_1729829730274_content"
+    aria-labelledby="accordion_1729829730274_control">
+      <span class="sr-only">Start of accordion content</span>
+      <div>This is the content</div>
+      <footer>This is a footer</footer>
+  </section>
+</section>
+```

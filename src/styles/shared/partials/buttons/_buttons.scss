@@ -1,0 +1,175 @@
+@use 'sass:math';
+
+@use 'buttonMixins';
+@use 'buttonVariables';
+
+@use '../../utilities/mixins';
+@use '../../partials/colors/tintsAndShades';
+@use '../../../themes/monochrome/palette';
+
+$buttonSidesPadding: 15px !default;
+$buttonSidesPaddingCompact: 10px !default;
+$buttonTopBottomPadding: 0 !default;
+$buttonBorderRadius: 3px !default;
+$buttonBorderThickness: 1px !default;
+
+button {
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  border-width: $buttonBorderThickness;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+:root {
+  @include buttonVariables.buttonVariables(palette.$primaryButtonBg, palette.$secondaryButtonBg, palette.$tertiaryButtonBg, $borderRadius: $buttonBorderRadius, $borderThickness: $buttonBorderThickness);
+}
+
+.button {
+  @include buttonMixins.defaultButtonStyles();
+  padding: 0 $buttonSidesPadding;
+  background: #{tintsAndShades.$neutral-70};
+  color: #{tintsAndShades.$neutral-10};
+  transition: palette.$buttonTransition;
+
+  @include buttonMixins.createButtonSubClasses(primary);
+
+  &.invisible {
+    background: transparent;
+    border: none;
+    color: inherit;
+  }
+
+  &.text_only {
+    color: var(--textOnlyColor);
+  }
+
+  &.iconOnly {
+    padding: 0;
+  }
+
+  &.compact {
+    @include buttonMixins.smallButtonStyles();
+    padding: 0 $buttonSidesPaddingCompact;
+  }
+
+  &.active,
+  &:active {
+    text-decoration: var(--buttonActiveTextDecoration);
+  }
+
+  &.inactive,
+  &.appearDisabled,
+  &[disabled],
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  @include buttonMixins.createButtonClass(primary);
+  @include buttonMixins.createButtonClass(secondary);
+  @include buttonMixins.createButtonClass(tertiary);
+
+  &.icon_only {
+    padding: 0;
+    justify-content: center;
+    width: mixins.$screenTouchSize;
+    .icon {
+      margin: 0;
+      top: 0;
+    }
+
+    &.small {
+      height: 32px;
+      width: 32px;
+      min-width: auto;
+      min-height: auto;
+      font-size: 14px;
+    }
+  }
+
+  &.text_only {
+    background: none;
+    border: none;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
+    min-height: math.div(mixins.$screenTouchSize, 2);
+    line-height: math.div(mixins.$screenTouchSize, 2);
+    padding: 0 10px;
+    justify-content: inherit;
+
+    span.labelText {
+      text-decoration: underline;
+    }
+
+    &:focus,
+    &.focus,
+    &:active,
+    &.active,
+    &:hover,
+    &.hover {
+      border: none;
+      outline: var(--textOnlyFocusOutline) !important;
+      text-decoration: none;
+      border-radius: 22px;
+      background: var(--textOnlyFocusBg);
+    }
+
+    &:hover,
+    &.hover,
+    &:active,
+    &.active {
+      color: var(--textOnlyColor);
+      outline: none;
+      border: none;
+      background: var(--textOnlyHoverBg);
+    }
+
+    &.inactive,
+    &.appearDisabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+    }
+
+    &.primary,
+    &.secondary,
+    &.tertiary {
+      background: none;
+      border: none;
+      &:hover,
+      &.hover,
+      &:active,
+      &.active {
+        background: none;
+        border: none;
+      }
+    }
+
+    &.inverse {
+      color: var(--textOnlyInverseColor);
+      background: none;
+      border: none;
+      &:focus,
+      &.focus {
+        outline: var(--textOnlyFocusOutline) !important;
+      }
+
+      &.primary,
+      &.secondary,
+      &.tertiary {
+        background: none;
+        border: none;
+        &:hover,
+        &.hover {
+          background: none;
+          border: none;
+        }
+      }
+    }
+  }
+}

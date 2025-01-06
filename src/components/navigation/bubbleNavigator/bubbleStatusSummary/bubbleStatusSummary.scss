@@ -1,0 +1,106 @@
+@use '../../../../styles/shared/utilities/mixins';
+
+.bubbleStatusSummary {
+  position: absolute;
+  bottom: 10px;
+
+  .bubbleStatusSummaryList {
+    .bubbleStatusSummaryListLabel {
+      font-size: 11px;
+      .statusLight {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.childBubbles {
+  .bubbleStatusSummaryListLabel {
+    .statusCount {
+      color: var(--childBubbleFg);
+    }
+    .statusLight {
+      &.defCon3 {
+        animation: highlightDefCon3Pulse 1s ease infinite;
+      }
+    }
+  }
+}
+
+.parentBubble {
+  .bubbleStatusSummaryListLabel {
+    .statusCount {
+      color: var(--parentBubbleFg);
+    }
+  }
+}
+
+.bubbleStatusSummaryListPanel {
+  height: 250px;
+  max-height: 250px;
+  position: fixed;
+  top: 100%;
+  background: #fff;
+  width: 300px;
+  z-index: 10;
+  font-size: 11px;
+  border: 1px solid #eee;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 0 #eee;
+  left: -75px;
+
+  h3 {
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    padding-left: 20px;
+  }
+
+  .icon {
+    position: absolute;
+    font-size: 21px;
+    top: 5px;
+    left: 5px;
+    text-align: center;
+    color: #c00;
+  }
+
+  .statusListScroller {
+    overflow: auto;
+    max-height: 200px;
+  }
+
+  ul {
+    @include mixins.rowLayout($alignItems: flex-start);
+    flex-wrap: wrap;
+    row-gap: 20px;
+    li {
+      @include mixins.rowLayout($alignItems: flex-start);
+      flex: 1;
+      width: 50%;
+      .statusDetails {
+        @include mixins.columnLayout($gap: 0, $alignItems: left);
+
+        .labelText {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+@keyframes highlightDefCon3Pulse {
+  from {
+    box-shadow: 0 0 1px 0 var(--childBubbleFg);
+  }
+
+  to {
+    box-shadow: 0 0 8px 0 var(--childBubbleFg);
+  }
+}

@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Code Style Guidelines" />
+
+# Code Style Guidelines
+
+## General Rules
+- **Use TypeScript**: All code should be written in TypeScript.
+- **File Structure**: Follow the Next.js conventions and structure.
+
+## Security and Best Practices
+- **Avoid Console Logs**: Do not use `console.log` in production code.
+- **No Unused Variables**: Ensure there are no unused variables. (Exceptions may apply in certain contexts, such as during development or testing.)
+
+## Formatting
+- **Indentation**: Use 2 spaces for indentation.
+- **Quotes**: Use single quotes (`'`) for strings.
+- **Semicolons**: Always end statements with a semicolon.
+- **Comma Dangle**: Do not use trailing commas in object or array literals.
+- **Curly Braces**: Always use curly braces for control statements (e.g., `if`, `for`).
+
+## Function and Variable Declarations
+- **Arrow Functions**: Use arrow functions for both named and unnamed components.
+- **Function Names**: Avoid using named function expressions; prefer function expressions.
+- **Single Variable Declarations**: Do not declare multiple variables in a single `var` statement.
+
+## React-Specific Rules
+- **Prop Types**: Always define `propTypes` for React components, except for functional components that do not need them.
+- **Default Props**: Specify default props for components, unless they are functional components.
+- **JSX File Extensions**: Use `.jsx` and `.tsx` for files that contain JSX.
+
+## Import Statements
+- **Import Sorting**: Ensure imports are sorted logically; use the `simple-import-sort` plugin for automation.
+- **No Extraneous Dependencies**: Only include dependencies that are necessary for the file.
+- **Default Exports**: Prefer named exports to default exports unless a default export is explicitly needed.
+
+## Spacing and Formatting in JSX
+- **JSX Curly Spacing**: Include space inside curly braces when they contain expressions or object literals.
+- **JSX Fragments**: Use `<React.Fragment>` or shorthand `<>` to group multiple elements.
+- **JSX Key Prop**: Always provide a unique `key` prop when rendering lists of elements.
+
+## Comments
+- **Max Line Length**: Keep lines to a maximum length of 150 characters, ignoring comments and certain literals.
+
+## Testing
+- **Jest Globals**: Recognize Jest global functions such as `expect` and `test` without needing to import them.
+
+## Additional Considerations
+- **Avoid Mutations**: Do not reassign parameters or objects passed to functions.
+- **No Plus Plus**: Avoid using the `++` and `--` operators.
+
+## Ignored Files and Patterns
+- **Ignore Patterns**: The following patterns are ignored:
+- All dotfiles (e.g., `.env`, `.gitignore`)
+- The `node_modules` directory
+- The `dist` directory
+- Any JavaScript files with names starting with a dot
+
+## Special Configuration
+- **Project Settings**: The ESLint configuration recognizes specific project settings for Jest and React, adapting to their respective versions automatically.

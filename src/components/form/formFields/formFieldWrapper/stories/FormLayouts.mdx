@@ -1,0 +1,22 @@
+import { Canvas, Meta, Controls } from '@storybook/blocks';
+import * as FormLayoutStories from './FormLayouts.stories';
+
+<Meta of={ FormLayoutStories } />
+
+# React Hook Form
+As mentioned in [FormField](?path=/docs/forms-component-structure-formfield--docs), form elements in this library have been designed to leverage the [react-hook-form](https://react-hook-form.com/) library. To leverage the full capabilities of the library including the built-in easy to use and extensible validation capabilities, all form elements need to be wrapped in a [hook form provider](https://react-hook-form.com/docs/formprovider) and an HTML form element.
+
+This HookFormWrapper component has been included to make the implementation of the hook form provider and initialisation easier.
+
+Remember: There should only ever be one form element per screen so we recommend including it as a root dom node either via a HookFormWrapper or native HTML form element.
+
+## Using the HookFormWrapper to control field layouts at the form level
+The HookFormWrapper supports a custom formCssClass. The default is 'x15StandardForm' which creates the layout below whereby inputs are stacked on top of each other. Note spacing is provided to allow validation error messages to appear without causing surrounding elements to move.
+
+## Default Example
+
+<Canvas of={FormLayoutStories.Default} />
+
+<Controls />
+
+<Canvas of={FormLayoutStories.ColumnsWithStackedFields} />

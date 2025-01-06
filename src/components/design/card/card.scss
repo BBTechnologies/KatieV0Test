@@ -1,0 +1,119 @@
+@use '../../../styles/shared/partials/buttons/buttonMixins';
+@use '../../../styles/shared/partials/typography/typography';
+@use '../../../styles/shared/utilities/mixins';
+
+.card {
+  min-width: var(--cardMinWidth);
+  max-width: var(--cardMaxWidth);
+  border: var(--cardBorder);
+  border-radius: var(--cardBorderRadius);
+  box-shadow: var(--cardBoxShadow);
+  background: var(--cardBg);
+  margin: var(--cardMargin);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0;
+
+  &.card_xs {
+    min-width: var(--cardMinWidthXSmall);
+    max-width: var(--cardMaxWidthXSmall);
+  }
+
+  &.card_s {
+    min-width: var(--cardMinWidthSmall);
+    max-width: var(--cardMaxWidthSmall);
+  }
+
+  &.card_m {
+    min-width: var(--cardMinWidthMedium);
+    max-width: var(--cardMaxWidthMedium);
+  }
+
+  &.card_l {
+    min-width: var(--cardMinWidthLarge);
+    max-width: var(--cardMaxWidthLarge);
+  }
+
+  &.card_xl {
+    min-width: var(--cardMinWidthXLarge);
+    max-width: var(--cardMaxWidthXLarge);
+  }
+
+  &.card_auto {
+    min-width: 0;
+    max-width: none;
+  }
+
+  .cardContent {
+    flex: 1;
+    box-sizing: border-box;
+    padding: var(--cardContentPadding);
+    max-height: none;
+    opacity: 1;
+    transition: all 1s ease;
+    background: var(--cardContentBg);
+    color: var(--cardContentFg);
+  }
+
+  .cardFooter {
+    padding: var(--cardFooterPadding);
+    background: var(--cardFooterBg);
+    color: var(--cardFooterFg);
+    box-shadow: var(--cardFooterBoxShadow);
+    border-radius: var(--cardFooterBorderRadius);
+    border-top: var(--cardFooterBorder);
+  }
+
+  // Heights
+  &.card_height_xs {
+    header.cardHeader {
+      button {
+        height: 30px;
+        font-size: 0.7em;
+        padding: 0 8px;
+      }
+    }
+    .cardContent {
+      max-height: 80px;
+      overflow: auto;
+      padding: 8px;
+    }
+  }
+
+  &.card_height_s {
+    header.cardHeader {
+      button {
+        height: 36px;
+        font-size: 0.8em;
+        padding: 0 10px;
+      }
+    }
+    .cardContent {
+      max-height: 150px;
+      overflow: auto;
+      padding: 10px;
+    }
+  }
+
+  &.card_height_m {
+    .cardContent {
+      max-height: 300px;
+      overflow: auto;
+    }
+  }
+
+  &.card_height_l {
+    .cardContent {
+      max-height: 450px;
+      overflow: auto;
+    }
+  }
+
+  &.card_height_xl {
+    .cardContent {
+      max-height: 600px;
+      overflow: auto;
+    }
+  }
+}

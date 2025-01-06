@@ -1,0 +1,58 @@
+@use 'sass:math';
+@use '../../../styles/shared/utilities/mixins';
+@use '../../../styles/shared/partials/buttons/buttonMixins';
+
+.menuWrapper {
+  &.vertical {
+    .subMenuItems {
+      @include mixins.columnLayout($gap: 0);
+      display: none;
+      &.subMenuItems_level1,
+      &.isOpen {
+        display: flex;
+      }
+
+      .subMenu {
+        @include mixins.columnLayout($gap: 0);
+        width: 100%;
+
+        > * {
+          width: 100%;
+        }
+
+        &.level_2 {
+          .activeMenuItem,
+          button {
+            padding-left: 20px;
+          }
+        }
+
+        &.level_3 {
+          button {
+            padding-left: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  button,
+  .activeMenuItem {
+    background: none;
+    border: none;
+    @include buttonMixins.defaultButtonStyles();
+    border-radius: 0;
+    width: 100%;
+    text-align: left;
+    padding: 0 10px;
+
+    .labelText {
+      flex: 1;
+    }
+  }
+
+  .activeMenuItem {
+    background: #d3dee4;
+    border-radius: 3px;
+  }
+}

@@ -1,0 +1,51 @@
+@use 'sass:math';
+@use 'sass:color';
+@use '../../utilities/mixins';
+@use 'buttonMixins';
+@use '../../utilities/functions';
+
+@mixin buttonVariables(
+  $primaryButtonBg,
+  $secondaryButtonBg,
+  $tertiaryButtonBg,
+  $borderRadius,
+  $borderThickness
+) {
+  --buttonBorderRadius: #{$borderRadius};
+  --buttonHoverTransition: none;
+  --buttonActiveTextDecoration: underline;
+
+  $textOnlyColor: color.adjust($primaryButtonBg, $lightness: 45%);
+  $textOnlyInverseColor: #000;
+  $textOnlyActiveColor: #fff;
+  $textOnlyFocusOutline: #ddd;
+
+  @if functions.closerToWhite($primaryButtonBg) {
+    $textOnlyColor: color.adjust($primaryButtonBg, $lightness: -45%);
+    $textOnlyInverseColor: #fff;
+    $textOnlyActiveColor: #000;
+    $textOnlyFocusOutline: #333;
+  }
+
+  --textOnlyColor: #{$textOnlyColor};
+  --textOnlyInverseColor: #{$textOnlyInverseColor};
+  --textOnlyActiveFgColor: #{$textOnlyActiveColor};
+  --textOnlyActiveBg: transparent;
+  --textOnlyFocusBg: transparent;
+  --textOnlyHoverBg: transparent;
+
+  --textOnlyFocusOutline: 1px dotted #{$textOnlyFocusOutline};
+}
+
+@mixin autoButtonVariables (
+  $primaryButtonBg,
+  $secondaryButtonBg,
+  $tertiaryButtonBg,
+  $borderThickness
+) {
+  :root {
+    @include buttonMixins.createButtonVariables('primary', $primaryButtonBg, $borderThickness);
+    @include buttonMixins.createButtonVariables('secondary', $secondaryButtonBg, $borderThickness);
+    @include buttonMixins.createButtonVariables('tertiary', $tertiaryButtonBg, $borderThickness);
+  }
+}

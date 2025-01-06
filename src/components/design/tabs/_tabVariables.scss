@@ -1,0 +1,56 @@
+@use '../../../styles/themes/monochrome/palette';
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$tabControlPadding: 20px !default;
+$tabControlHeight: 50px !default;
+$tabControlBorder: 1px solid #{tintsAndShades.$neutral-80} !default;
+$tabControlBottomBorder: 3px solid #{tintsAndShades.$neutral-40} !default;
+$tabControlBorderRadius: 3px 3px 0 0 !default;
+$tabControlShadow: none !default;
+$tabControlBg: #{tintsAndShades.$neutral-95} !default;
+$tabControlFgColor: #{tintsAndShades.$neutral-20} !default;
+
+$tabControlActivePadding: 20px !default;
+$tabControlActiveHeight: 50px !default;
+$tabControlActiveBorder: 1px solid #{tintsAndShades.$neutral-80} !default;
+$tabControlActiveBottomBorder: 3px solid #fff !default;
+$tabControlActiveBorderRadius: 3px 3px 0 0 !default;
+$tabControlActiveShadow: none !default;
+$tabControlActiveBg: #fff !default;
+$tabControlActiveFgColor: #{tintsAndShades.$neutral-20} !default;
+
+$tabContentBorderWidth: 1px !default;
+
+$tabContentPadding: 20px !default;
+$tabContentBg: #fff !default;
+$tabContentFgColor: #{tintsAndShades.$neutral-20} !default;
+$tabContentShadow: none !default;
+$tabContentBorder: $tabContentBorderWidth solid #{tintsAndShades.$neutral-80} !default;
+$tabContentBorderRadius: 0 3px 3px 3px !default;
+
+@mixin tabVariables {
+  --tabControlPadding: #{$tabControlPadding};
+  --tabControlHeight: #{$tabControlHeight};
+  --tabControlBorder: #{$tabControlBorder};
+  --tabControlBottomBorder: #{$tabControlBottomBorder};
+  --tabControlBorderRadius: #{$tabControlBorderRadius};
+  --tabControlShadow: #{$tabControlShadow};
+  --tabControlBg: #{$tabControlBg};
+  --tabControlFgColor: #{$tabControlFgColor};
+ 
+  --tabControlActivePadding: #{$tabControlActivePadding};
+  --tabControlActiveHeight: #{$tabControlActiveHeight};
+  --tabControlActiveBorder: #{$tabControlActiveBorder};
+  --tabControlActiveBottomBorder: #{$tabControlActiveBottomBorder};
+  --tabControlActiveBorderRadius: #{$tabControlActiveBorderRadius};
+  --tabControlActiveShadow: #{$tabControlActiveShadow};
+  --tabControlActiveBg: #{$tabControlActiveBg};
+  --tabControlActiveFgColor: #{$tabControlActiveFgColor};
+ 
+  --tabContentPadding: #{$tabContentPadding};
+  --tabContentBg: #{$tabContentBg};
+  --tabContentFgColor: #{$tabContentFgColor};
+  --tabContentShadow: #{$tabContentShadow};
+  --tabContentBorder: #{$tabContentBorder};
+  --tabContentBorderRadius: #{$tabContentBorderRadius};
+}

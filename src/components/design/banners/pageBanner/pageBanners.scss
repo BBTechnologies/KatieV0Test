@@ -1,0 +1,191 @@
+@use '../../../../styles/shared/utilities/mixins';
+
+.pageBanner {
+  @include mixins.rowLayout();
+  padding: 10px 20px;
+  font-size: 16px;
+  position: relative;
+  border-color: var(--bannerBorderColor);
+  border-radius: var(--bannerBorderRadius);
+  min-height: mixins.$screenTouchSize;
+
+  &.withHeader {
+    align-items: flex-start;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pageBannerContent {
+    @include mixins.columnLayout($alignItems: 'flex-start');
+    flex: 1;
+  }
+
+  .closeBannerButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: mixins.$screenTouchSize;
+    height: mixins.$screenTouchSize;
+    text-align: right;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: inherit;
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: underline;
+    font-size: inherit;
+  }
+
+  .pageBannerMainIcon {
+    width: var(--bannerIconSize);
+    height: 100%;
+    .icon {
+      height: var(--bannerIconSize);
+      text-align: center;
+      font-size: var(--bannerIconSize);
+    }
+  }
+
+  .pageBannerHeader {
+    width: 100%;
+    font-size: 17px;
+    border-bottom: 1px solid var(--bannerHeaderFooterBorderColor);
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-top: 0;
+    }
+  }
+
+  .pageBannerFooter {
+    width: 100%;
+    border-top: 1px solid var(--bannerHeaderFooterBorderColor);
+    font-size: 11px;
+  }
+
+  /* Display modes */
+  &.fixed {
+    position: fixed;
+    z-index: 2000;
+
+    /* Positions */
+    &.top {
+      top: var(--bannerStandardOffset);
+      left: var(--bannerStandardOffset);
+      right: var(--bannerStandardOffset);
+    }
+
+    &.center {
+      top: 25vh;
+      left: 15vw;
+      width: 70vw;
+      height: 50vh;
+      .pageBannerContent {
+        align-items: center;
+      }
+    }
+  }
+
+  &.inline {
+    position: relative;
+  }
+
+  /* Types */
+  &.alert {
+    background: var(--bannerAlertBg);
+    color: var(--bannerAlertFgColor);
+  }
+
+  &.info {
+    background: var(--bannerInfoBg);
+    color: var(--bannerInfoFgColor);
+  }
+
+  &.warn {
+    background: var(--bannerWarnBg);
+    color: var(--bannerWarnFgColor);
+  }
+
+  &.error {
+    background: var(--bannerErrorBg);
+    color: var(--bannerErrorFgColor);
+  }
+
+  &.success {
+    background: var(--bannerSuccessBg);
+    color: var(--bannerSuccessFgColor);
+  }
+
+  &.autoHide_1_none {
+    animation: fadeOut 1s;
+    @include mixins.animationStop(false, 2s);
+  }
+
+  &.autoHide_1_slide {
+    animation: slide 1s, fadeOut 1s;
+    @include mixins.animationStop(true, 2s);
+  }
+
+  &.autoHide_1_grow {
+    animation: grow 1s, fadeOut 1s;
+    @include mixins.animationStop(true, 2s);
+  }
+
+  &.autoHide_3_none {
+    animation: fadeOut 3s;
+    @include mixins.animationStop(false, 4s);
+  }
+
+  &.autoHide_3_slide {
+    animation: slide 1s, fadeOut 3s;
+    @include mixins.animationStop(true, 4s);
+  }
+
+  &.autoHide_3_grow {
+    animation: grow 1s, fadeOut 3s;
+    @include mixins.animationStop(true, 4s);
+  }
+
+  &.autoHide_5_none {
+    animation: fadeOut 5s;
+    @include mixins.animationStop(false, 6s);
+  }
+
+  &.autoHide_5_slide {
+    animation: slide 1s, fadeOut 5s;
+    @include mixins.animationStop(true, 6s);
+  }
+
+  &.autoHide_5_grow {
+    animation: grow 1s, fadeOut 5s;
+    @include mixins.animationStop(true, 6s);
+  }
+
+  &.autoHide_10_none {
+    animation: fadeOut 10s;
+    @include mixins.animationStop(false, 10s);
+  }
+
+  &.autoHide_10_slide {
+    animation: slide 1s, fadeOut 10s;
+    @include mixins.animationStop(true, 10s);
+  }
+
+  &.autoHide_10_grow {
+    animation: grow 1s, fadeOut 10s;
+    @include mixins.animationStop(true, 10s);
+  }
+}

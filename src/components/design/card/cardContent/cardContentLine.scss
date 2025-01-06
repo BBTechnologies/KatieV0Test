@@ -1,0 +1,35 @@
+@use '../../../../styles/shared/partials/buttons/buttonMixins';
+@use '../../../../styles/shared/partials/typography/typography';
+@use '../../../../styles/shared/utilities/mixins';
+
+.cardContentLine {
+  @include mixins.rowLayout($justifyContent: space-between);
+  position: relative;
+  border-top: 1px solid #eee;
+  padding: 10px 0;
+  min-height: 65px;
+  box-sizing: border-box;
+
+  &:first-of-type {
+    border-top: none;
+  }
+
+  .cardContentLineContent {
+    flex: 1;
+  }
+
+  .cardContentLineButton {
+    background: none;
+    border: none;
+
+    > .icon {
+      font-size: 40px;
+    }
+  }
+
+  &:hover {
+    .ownerDetailsPopup {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,316 @@
+@use '../../../styles/shared/utilities/mixins';
+
+.dialogOverlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--dialogOverlayColor);
+  display: none;
+  z-index: 1000000;
+
+  &.isVisible {
+    display: block;
+  }
+}
+
+.dialog {
+  display: none;
+  position: fixed;
+  box-sizing: border-box;
+  background: var(--dialogBg);
+  color: var(--dialogFg);
+  box-shadow: var(--dialogShadow);
+  border: var(--dialogBorder);
+  border-radius: var(--dialogBorderRadius);
+  z-index: 2000000;
+
+  &.isOpen {
+    display: flex;
+  }
+
+  .dialogClose {
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--dialogCloseButtonBorder);
+    background: var(--dialogCloseButtonBg);
+    color: var(--dialogCloseButtonFg);
+    box-shadow: var(--dialogCloseButtonShadow);
+  }
+
+  .dialogHeader {
+    @include mixins.rowLayout();
+    box-sizing: border-box;
+    border-bottom: var(--dialogHeaderBottomBorder);
+    box-shadow: var(--dialogHeaderShadow);
+    padding: var(--dialogHeaderPadding);
+    min-height: var(--dialogHeaderHeight);
+    width: 100%;
+    max-width: 100%;
+
+    &:focus {
+      outline: var(--dialogFocusOutline);
+    }
+
+    .dialogHeaderText,
+    .headerBar {
+      @include mixins.overflowText();
+      @include mixins.rowLayout();
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin: 0;
+
+      h2, h3, h4, h5, h6 {
+        margin: 0;
+      }
+    }
+  }
+
+  .dialogContent {
+    padding: var(--dialogContentPadding);
+    flex: 5;
+    box-sizing: border-box;
+    width: 100%;
+
+    &:focus {
+      outline: var(--dialogFocusOutline);
+      outline-offset: -1px;
+    }
+  }
+
+  .dialogFooter {
+    @include mixins.rowLayout();
+    box-sizing: border-box;
+    border-top: var(--dialogFooterTopBorder);
+    box-shadow: var(--dialogFooterShadow);
+    padding: var(--dialogFooterPadding);
+    width: 100%;
+    max-width: 100%;
+
+    .dialogFooterText {
+      @include mixins.overflowText();
+      @include mixins.rowLayout();
+      min-height: var(--dialogFooterHeight);
+    }
+
+    &:focus {
+      outline: var(--dialogFocusOutline);
+    }
+  }
+
+  // SCROLLING BEHAVIOURS
+  .dialogFullScroller {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    @include mixins.columnLayout($gap: 0);
+    align-items: flex-start;
+    max-width: 100%;
+  }
+
+  .dialogContentAndFooterScroller {
+    @include mixins.columnLayout($gap: 0);
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  &.dialogScrollBehaviour_all {
+    .dialogFullScroller {
+      overflow: auto;
+      max-height: 100%;
+    }
+  }
+
+  &.dialogScrollBehaviour_contentOnly {
+    .dialogContentAndFooterScroller {
+      flex: 1;
+      overflow: auto;
+      .dialogContent {
+        overflow: auto;
+        flex: 1;
+      }
+    }
+  }
+
+  &.dialogScrollBehaviour_contentAndFooter {
+    .dialogContentAndFooterScroller {
+      overflow: auto;
+      flex: 1;
+    }
+  }
+
+  // SIZES
+
+  // xs = 24% screen size
+  &.dialogSize_xs {
+    left: 38vw;
+    top: 38vh;
+    width: 24vw;
+    height: 24vh;
+    .dialogHeaderText,
+    .headerBar {
+      max-width: 24vw;
+    }
+    .dialogHeader {
+      max-height: 5vw;
+      overflow: auto;
+    }
+  }
+
+  // s = 30% screen size
+  &.dialogSize_s {
+    left: 35vw;
+    top: 35vh;
+    width: 30vw;
+    height: 30vh;
+    .dialogHeaderText,
+    .headerBar {
+      max-width: 30vw;
+    }
+  }
+
+  // s = 50% screen size
+  &.dialogSize_m {
+    left: 25vw;
+    top: 25vh;
+    width: 50vw;
+    height: 50vh;
+  }
+
+  // s = 70% screen size
+  &.dialogSize_l {
+    left: 15vw;
+    top: 15vh;
+    width: 70vw;
+    height: 70vh;
+  }
+
+  // s = 90% screen size
+  &.dialogSize_xl {
+    left: 5vw;
+    top: 5vh;
+    width: 90vw;
+    height: 90vh;
+  }
+
+  // POSITIONS
+  &.dialogPosition_left {
+    left: 0;
+  }
+
+  &.dialogPosition_right {
+    left: auto;
+    right: 0;
+
+    .dialogClose {
+      right: 0;
+      top: -16px;
+    }
+  }
+
+  &.dialogPosition_top {
+    top: 0;
+
+    .dialogClose {
+      top: 0;
+    }
+  }
+
+  &.dialogPosition_bottom {
+    top: auto;
+    bottom: 0;
+  }
+
+  &.dialogPosition_topleft {
+    left: 0;
+    top: 0;
+
+    .dialogClose {
+      top: 0;
+    }
+  }
+
+  &.dialogPosition_topright {
+    left: auto;
+    right: 0;
+    top: 0;
+
+    .dialogClose {
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &.dialogPosition_bottomleft {
+    left: 0;
+    top: auto;
+    bottom: 0;
+  }
+
+  &.dialogPosition_bottomright {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 0;
+
+    .dialogClose {
+      right: 0;
+    }
+  }
+
+  // ANIMATIONS
+  &.dialogAnimation_grow {
+    transform: scale(0.1);
+    animation: grow 2s ease;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+
+  // ANIMATIONS
+  &.dialogAnimation_reveal {
+    opacity: 0;
+    animation: reveal 2s ease;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+
+  // SMALL SCREEN SIZES
+  @media screen and (max-width: 720px) {
+    &.isOpen {
+      left: 15vw;
+      right: 15vw;
+    }
+  }
+
+  @media screen and (max-width: 599px) {
+    &.isOpen {
+      left: 5vw;
+      right: 5vw;
+    }
+  }
+
+  @media screen and (max-height: 720px) {
+    &.isOpen {
+      top: 15vh;
+      bottom: 15vh;
+    }
+  }
+
+  @media screen and (max-height: 599px) {
+    &.isOpen {
+      top: 5vh;
+      bottom: 5vh;
+    }
+  }
+}

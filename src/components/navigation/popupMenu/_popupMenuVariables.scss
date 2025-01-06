@@ -1,0 +1,33 @@
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$popupMenuBg: tintsAndShades.$neutral-90 !default;
+$popupMenuBorder: 1px solid tintsAndShades.$neutral-70 !default;
+$popupMenuBorderRadius: 3px !default;
+$popupMenuBoxShadow: 0 0 5px 0 tintsAndShades.$neutral-60 !default;
+
+$popupMenuWidth: 280px !default;
+$popupMenuMaxHeight: 350px !default;
+
+$popupMenuButtonBg: tintsAndShades.$neutral-90;
+$popupMenuButtonBorder: 1px solid tintsAndShades.$neutral-90;
+$popupMenuButtonFgColor: tintsAndShades.$neutral-20;
+$popupMenuButtonBgHover: tintsAndShades.$neutral-70;
+$popupMenuButtonFgColorHover: tintsAndShades.$neutral-10;
+$popupMenuButtonBorderHover: 1px solid tintsAndShades.$neutral-70;
+
+@mixin popupMenuVariables {
+  --popupMenuBg: #{$popupMenuBg};
+  --popupMenuBorder: #{$popupMenuBorder};
+  --popupMenuBorderRadius: #{$popupMenuBorderRadius};
+  --popupMenuBoxShadow: #{$popupMenuBoxShadow};
+
+  --popupMenuWidth: #{$popupMenuWidth};
+  --popupMenuMaxHeight: #{$popupMenuMaxHeight};
+
+  --popupMenuButtonBg: #{$popupMenuButtonBg};
+  --popupMenuButtonBorder: #{$popupMenuButtonBorder};
+  --popupMenuButtonFgColor: #{$popupMenuButtonFgColor};
+  --popupMenuButtonBgHover: #{$popupMenuButtonBgHover};
+  --popupMenuButtonFgColorHover: #{$popupMenuButtonFgColorHover};
+  --popupMenuButtonBorderHover: #{$popupMenuButtonBorderHover};
+}

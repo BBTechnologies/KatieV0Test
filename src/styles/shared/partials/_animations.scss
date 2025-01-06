@@ -1,0 +1,109 @@
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-down {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: slide-down 1s ease infinite;
+}
+
+@keyframes slide {
+  from {
+    margin-top: -25vh;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+
+.slide-down {
+  margin-top: -25vh;
+  animation: slide 1s ease infinite;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.grow {
+  transform: scale(0.1);
+  animation: grow 1s ease infinite;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.fadeOut {
+  opacity: 1;
+  animation: fadeOut 1s ease infinite;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: reveal 1s ease infinite;
+}
+
+@keyframes rotate {
+  0%   {  transform: rotate(0deg);    }
+  100% {  transform: rotate(360deg);  }
+}
+
+.rotate {
+  transform: rotate(0deg);
+  animation: rotate 1s ease infinite;
+}
+
+/* GENERIC TIMINGS */
+.animate-once {
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.animate-slow {
+  animation-duration: 3s;
+}
+
+.animate-fast {
+  animation-duration: 0.5s;
+}

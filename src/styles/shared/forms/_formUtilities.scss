@@ -1,0 +1,14 @@
+@mixin baseInputFields {
+  font-size: 16px; //At this size if an input field receives focus on a device it won't automatically zoom
+  height: var(--inputHeight);
+  line-height: var(--inputHeight);
+  color: var(--inputValueColor);
+  background: var(--inputBgColor);
+  border: var(--inputBorder);
+  border-radius: var(--inputBorderRadius);
+  padding: var(--inputPadding);
+  width: 100%;
+  box-sizing: border-box;
+  transition: var(--inputTransition);
+}
+

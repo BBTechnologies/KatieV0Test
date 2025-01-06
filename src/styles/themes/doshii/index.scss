@@ -1,0 +1,64 @@
+@use 'sass:math';
+@use "sass:meta";
+@use 'fonts';
+@use 'palette' as palette;
+
+@use '../../variables/cssVars/formVariables';
+@use '../../variables/cssVars/navigationVariables';
+@use '../../variables/cssVars/layoutVariables' with (
+  $headingFont: ("roc-grotesk-wide", sans-serif),
+  $bodyFont: ("roc-grotesk")
+);
+
+@use '../../../components/design/accordion/accordionVariables' with (
+  $accordionHeaderFont: ("Catalogue", "Arial", "Helvetica", sans-serif),
+  $accordionBorder: 1px solid palette.$palette2,
+  $accordionHeaderIconColor: palette.$palette1
+);
+
+@use '../../../components/design/banners/pageBanner/pageBannerVariables';
+@use '../../../components/design/tooltip/tooltipVariables' with (
+  $tooltipIconBg: #005059,
+  $tooltipIconFgColor: #fff,
+  $tooltipContentBg: palette.$palette3_200,
+  $tooltipContentFgColor: palette.$baseTextColor
+);
+
+@use '../../../icons/style' with (
+  $icomoon-font-path: "../icons/fonts"
+);
+
+@use '../../../components/design/dialog/dialogVariables';
+@use '../../../components/design/icons/notificationIcon/notificationIconVariables';
+@use '../../../components/design/tabs/tabVariables';
+@use '../../../components/design/statusIndicators/statusIndicatorsVariables';
+
+@use '../../shared/partials/buttons/buttonVariables';
+@use '../../shared/partials/buttons/buttons' with (
+  $buttonBorderRadius: 22px,
+  $buttonBorderThickness: 1px
+);
+
+@use '../../shared/forms/forms';
+@use '../../shared/partials/typography/fonts/catalogue.font';
+@use '../../shared/partials/typography/typography';
+@use '../../shared/partials/layouts/layouts';
+@use '../../shared/partials/animations';
+@use '../../shared/utilities/mixins';
+
+@include buttonVariables.autoButtonVariables(
+    palette.$primaryButtonBg,
+    palette.$secondaryButtonBg,
+    palette.$tertiaryButtonBg,
+    1px
+);
+
+:root {
+  @include accordionVariables.accordionVariables;
+  @include pageBannerVariables.pageBannerVariables;
+  @include tooltipVariables.tooltipVariables;
+  @include dialogVariables.dialogVariables;
+  @include tabVariables.tabVariables;
+  @include statusIndicatorsVariables.statusIndicatorsVariables;
+  @include notificationIconVariables.notificationIconVariables;
+}

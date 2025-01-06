@@ -1,0 +1,91 @@
+import { Meta, ArgTypes } from '@storybook/blocks';
+import { Dialog } from './Dialog';
+
+<Meta
+  title="Docs/Introduction"
+  parameters={{ options: { showPanel: false } }}
+/>
+
+# Dialogs
+
+## Notes about implementation
+
+To make a dialog component accessible and compliant with the Web Content Accessibility Guidelines (WCAG), several requirements and ARIA (Accessible Rich Internet Applications) attributes need to be implemented. Below is a summary of how the dialog implementation meets the criteria.
+
+### WCAG Requirement: Perceivable
+Focus is given to the dialog when it opens, ensuring it's clearly visible to screen readers and keyboard users.
+
+##### Keyboard navigation:
+The dialog can be opened, closed, and navigated via keyboard (WCAG 2.1.1).
+The dialog can be closed via the Escape key (WCAG 2.1.2).
+
+Focus is contained inside the dialog so keyboard users can only interact with the dialog while it's open. Interactive elements within the dialog are navigable using Tab and Shift + Tab.
+The header, content and footer elements are all tabbable and focusable by keyboard.
+If the user manages to move the focus elsewhere in the dom, for instance by clicking on the address bar and tabbing back into the dom, the dialog will close itself.
+
+### WCAG Requirement: Understandable
+
+##### Clear labeling:
+The header property is a required property. This ensures the dialog has a clear heading that describes its purpose (WCAG 3.3.2).
+
+The dialog close button has type="button", a title attribute that shows 'Open and close dialog' on hover, and a screen reader friendly label of 'Close dialog'. (WCAG 2.4.6)
+The 'x' icon only adds presentational value so is hidden from screen readers via role="presentation" aria-hidden="true".
+
+#### ARIA Attributes
+The wrapping dialog element has the following aria properties;
+
+- ```role="dialog"```
+- ```aria-labelledby``` - this points at the dialog header element.
+- ```aria-describedby``` - this points at a hidden screen reader instruction at the start of the dialog which reads "The following content is in a dialog.
+You can press the Tab key to navigate through the elements, and press Escape to close the dialog.".
+- ```aria-modal="true"```
+
+A very basic example of a dialog is below. The intention is that the open and close state is managed by a parent component that hosts it.
+
+```
+const [dialogIsOpen, setDialogIsOpen] = useState(true);
+
+<Dialog {
+  ...{
+    id: 'Demo1',
+    header: 'This is a header',
+    footer: 'This is the footer',
+    onClose: () => setDialogIsOpen(false),
+    open: dialogIsOpen
+  }
+}
+>
+  This is the content
+</Dialog>
+```
+<ArgTypes of={Dialog} />
+
+It creates the following dom elements;
+```
+<div class="dialog isOpen dialogSize_m dialogPosition_center dialogAnimation_none dialogScrollBehaviour_contentAndFooter" role="dialog" aria-labelledby="dialogHeader_Demo1" tabindex="0" aria-describedby="dialogSRInstruction_Demo1" aria-modal="true">
+  <button class="dialogClose" title="Open and close dialog" type="button">
+    <i class="icon icon-cross" role="presentation" aria-hidden="true" />
+    <span class="sr-only">Close dialog </span>
+  </button>
+
+  <div class="dialogFullScroller">
+    <div id="dialogHeader_Demo1" class="dialogHeader" tabindex="0">
+      <span id="dialogSRInstruction_Demo1" class="sr-only">The following content is in a dialog. You can press the Tab key to navigate through the elements, and press Escape to close the dialog. </span>
+      <span class="dialogHeaderText">This is a header</span>
+    </div>
+    <div class="dialogContentAndFooterScroller">
+      <section class="dialogContent" tabindex="0">This is the content</section>
+      <div class="dialogFooter" tabindex="0">
+        <span class="dialogFooterText">This is the footer</span>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+And controls or adds a dialogOverlay element (appended to the body element).
+```
+<div class="dialogOverlay isVisible" id="dialogOverlay"></div>
+```
+
+

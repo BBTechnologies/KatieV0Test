@@ -1,0 +1,43 @@
+@use '../../../../styles/themes/monochrome/palette';
+@use '../../../../styles/shared/partials/colors/tintsAndShades';
+@use '../../../../styles/shared/partials/typography/typography';
+
+$bannerErrorBg: #900 !default;
+$bannerErrorFgColor: #{tintsAndShades.$white} !default;
+$bannerSuccessBg: #060 !default;
+$bannerSuccessFgColor: #{tintsAndShades.$white} !default;
+$bannerAlertBg: #c00 !default;
+$bannerAlertFgColor: #{tintsAndShades.$white} !default;
+$bannerInfoBg: #{tintsAndShades.$neutral-50} !default;
+$bannerInfoFgColor: #{tintsAndShades.$white} !default;
+$bannerWarnBg: #ffea99 !default;
+$bannerWarnFgColor: #{tintsAndShades.$black} !default;
+
+$bannerHeaderFooterBorderColor: rgba(255, 255, 255, 0.5) !default;
+
+$bannerStandardOffset: 20px !default;
+$bannerIconSize: 24px !default;
+$bannerPadding: 20px 40px 20px 80px !default;
+$bannerBorderRadius: 5px !default;
+$bannerSectionDivider: 1px solid rgba(255, 255, 255, 0.5) !default;
+
+@mixin pageBannerVariables {
+  --bannerErrorBg: #{$bannerErrorBg};
+  --bannerErrorFgColor: #{$bannerErrorFgColor};
+  --bannerSuccessBg: #{$bannerSuccessBg};
+  --bannerSuccessFgColor: #{$bannerSuccessFgColor};
+  --bannerAlertBg: #{$bannerAlertBg};
+  --bannerAlertFgColor: #{$bannerAlertFgColor};
+  --bannerInfoBg: #{$bannerInfoBg};
+  --bannerInfoFgColor: #{$bannerInfoFgColor};
+  --bannerWarnBg: #{$bannerWarnBg};
+  --bannerWarnFgColor: #{$bannerWarnFgColor};
+
+  --bannerHeaderFooterBorderColor: #{$bannerHeaderFooterBorderColor};
+
+  --bannerStandardOffset: #{$bannerStandardOffset};
+  --bannerIconSize: #{$bannerIconSize};
+  --bannerPadding: #{$bannerPadding};
+  --bannerBorderRadius: #{$bannerBorderRadius};
+  --bannerSectionDivider: #{$bannerSectionDivider};
+}

@@ -1,0 +1,84 @@
+@use '../../../styles/shared/utilities/mixins';
+
+.mainHeader {
+  background: var(--mainHeaderBg);
+  color: var(--mainHeaderFgColor);
+  padding: var(--mainHeaderPadding);
+  border: var(--mainHeaderBorder);
+  border-bottom: var(--mainHeaderBorderBottom);
+  box-shadow: var(--mainHeaderBoxShadow);
+  height: var(--mainHeaderHeight);
+
+  header {
+    @include mixins.rowLayout();
+
+    > section {
+      display: inline-flex;
+      justify-content: left;
+    }
+
+    .mainHeaderContent {
+      @include mixins.rowLayout();
+      flex: 1;
+    }
+
+    .mainHeaderRightContent {
+      @include mixins.rowLayout();
+      justify-content: right;
+      padding-right: 5px;
+    }
+
+    .ventureLogos {
+      @include mixins.rowLayout($gap: 20px);
+      margin-right: 20px;
+
+      .ventureLogo {
+        background: none;
+        max-height: var(--mainHeaderHeight);
+
+        svg {
+          height: 30px;
+          padding-bottom: 3px;
+          max-height: var(--mainHeaderHeight);
+          width: auto;
+        }
+
+        &.x15VenturesLogo {
+          svg {
+            height: 24px;
+          }
+        }
+
+        &.xGraphLogo {
+          svg {
+            height: 30px;
+            padding-top: 3px;
+            padding-bottom: 0;
+          }
+        }
+
+        &.truyuLogo {
+          svg {
+            height: 40px;
+            padding-bottom: 0;
+          }
+        }
+
+        &.homeInLogo {
+          svg {
+            height: 40px;
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+
+    label {
+      padding-bottom: 0;
+    }
+
+    .popupMenu {
+      display: inline-flex;
+    }
+  }
+}

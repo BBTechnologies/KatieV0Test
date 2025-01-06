@@ -1,0 +1,81 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:meta';
+
+// COLOUR FUNCTIONS
+@function colorLuminance($color) {
+  // Adapted from: https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js
+  // Formula: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+  $rgba: color.channel($color, 'red'), color.channel($color, 'green'), color.channel($color, 'blue');
+  $rgba2: ();
+
+  @for $i from 1 through 3 {
+    $rgb: list.nth($rgba, $i);
+    $rgb: math.div($rgb, 255);
+
+    $rgb: if($rgb < 0.03928, math.div($rgb, 12.92), pow(math.div(($rgb + 0.055), 1.055), 2.4));
+
+    $rgba2: list.append($rgba2, $rgb);
+  }
+
+  @return 0.2126 * list.nth($rgba2, 1) + 0.7152 * list.nth($rgba2, 2) + 0.0722 * list.nth($rgba2, 3);
+}
+
+@function contrastRatio($color1, $color2) {
+  // Adapted from: https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js
+  // Formula: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef
+  $luminance1: colorLuminance($color1) + 0.05;
+  $luminance2: colorLuminance($color2) + 0.05;
+  $ratio: math.div($luminance1, $luminance2);
+
+  @if $luminance2 > $luminance1 {
+    $ratio: math.div(1, $ratio);
+  }
+
+  $ratio: math.div(math.round($ratio * 10), 10);
+
+  @return $ratio;
+}
+
+@function hexToRgba($color, $alpha) {
+  @if meta.type-of($color) == 'color' {
+    $r: color.channel($color, 'red');
+    $g: color.channel($color, 'green');
+    $b: color.channel($color, 'blue');
+
+    @return rgba($r, $g, $b, $alpha);
+  } @else {
+    @error "Not a valid color";
+  }
+}
+
+@function closerToWhite($color) {
+  $contrastRatio: contrastRatio($color, #fff);
+  @if $contrastRatio < 4.5 {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function getWhiteOrBlackContrast($color) {
+  @if closerToWhite($color) {
+    @return white;
+  } @else {
+    @return black;
+  }
+}
+
+// CALCULATIONS
+// Angle based translations
+@function toRadians($angle) {
+  @return $angle * math.div(3.14159265359, 180); // Convert degrees to radians
+}
+
+@function translateAtAngle($distance, $angle) {
+  $radians: toRadians($angle);
+  $x: $distance * cos($radians);
+  $y: $distance * sin($radians);
+  @return translate($x, $y);
+}

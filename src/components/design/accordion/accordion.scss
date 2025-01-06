@@ -1,0 +1,189 @@
+@use '../../../styles/shared/partials/buttons/buttonMixins';
+@use '../../../styles/shared/partials/typography/typography';
+@use '../../../styles/shared/utilities/mixins';
+
+.accordion {
+  width: var(--accordionWidth);
+  border: var(--accordionBorder);
+  border-radius: var(--accordionBorderRadius);
+  background: var(--accordionBg);
+  margin: var(--accordionMargin);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0;
+
+  header.accordionHeader {
+    @include mixins.rowLayout();
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    border-bottom: var(--accordionHeaderBorder);
+    box-shadow: var(--accordionHeaderBoxShadow);
+    border-radius: var(--accordionHeaderBorderRadius);
+    background: var(--accordionHeaderBg);
+
+    &.accordionHeader_custom {
+      text-align: center;
+      padding: var(--accordionPadding);
+    }
+
+    h2, h3 {
+      margin: 0;
+    }
+
+    // This controls the open/close functionality
+    button {
+      @include buttonMixins.baseButtonStyles;
+      @include mixins.rowLayout($justifyContent: space-between);
+      padding: 0 20px;
+
+      font-family: var(--accordionHeaderFont) serif;
+      height: var(--accordionHeaderHeight);
+      width: var(--accordionWidth);
+      border: none;
+      font-size: var(--accordionHeaderFontSize);
+      font-weight: var(--accordionHeaderFontWeight);
+      background: none;
+      color: var(--accordionHeaderFg);
+
+      .icon {
+        margin-right: 0;
+        color: var(--accordionHeaderIconColor);
+      }
+
+      .labelText {
+        strong, em {
+          display: block;
+          font-weight: inherit;
+          font-style: normal;
+        }
+
+        em {
+          font-size: 0.75em;
+        }
+      }
+    }
+  }
+
+  &.fixed {
+    border: var(--accordionFixedBorder);
+    border-radius: var(--accordionFixedBorderRadius);
+    header.accordionHeader {
+      h2, h3 {
+        @include mixins.rowLayout($gap: 20px, $justifyContent: center);
+        font-weight: 800;
+        box-sizing: border-box;
+        height: var(--accordionFixedHeaderHeight);
+        width: var(--accordionFixedHeaderWidth);
+        border: var(--accordionFixedHeaderBorder);
+        font-size: var(--accordionHeaderFontSize);
+        background: var(--accordionFixedHeaderBg);
+        color: var(--accordionFixedHeaderFgColor);
+        border-radius: var(--accordionFixedBorderRadius) var(--accordionFixedBorderRadius) 0 0;
+      }
+    }
+  }
+
+  header.accordionHeader {
+    .accordionCustomHeading {
+      @include mixins.rowLayout($gap: 20px, $justifyContent: space-between, $alignItems: baseline);
+      padding: var(--accordionCustomHeaderPadding);
+
+      h2, h3 {
+        display: block;
+        padding: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .accordionContent {
+    box-sizing: border-box;
+    padding: var(--accordionPadding);
+    max-height: none;
+    opacity: 1;
+
+    footer {
+      padding: var(--accordionPadding);
+      margin: 0 -20px -20px;
+    }
+  }
+
+  &.animated {
+    .accordionContent {
+      transition: all 1s ease;
+    }
+  }
+
+  // Heights
+  &.accordion_xs {
+    header.accordionHeader {
+      button {
+        height: 30px;
+        font-size: 0.7em;
+        padding: 0 8px;
+      }
+    }
+    .accordionContent {
+      max-height: 80px;
+      overflow: auto;
+      padding: 8px;
+    }
+  }
+
+  &.accordion_s {
+    header.accordionHeader {
+      button {
+        height: 36px;
+        font-size: 0.8em;
+        padding: 0 10px;
+      }
+    }
+    .accordionContent {
+      max-height: 150px;
+      overflow: auto;
+      padding: 10px;
+    }
+  }
+
+  &.accordion_m {
+    .accordionContent {
+      max-height: 300px;
+      overflow: auto;
+    }
+  }
+
+  &.accordion_l {
+    .accordionContent {
+      max-height: 450px;
+      overflow: auto;
+    }
+  }
+
+  &.accordion_xl {
+    .accordionContent {
+      max-height: 600px;
+      overflow: auto;
+    }
+  }
+
+  &.closed {
+    overflow: hidden;
+
+    header.accordionHeader {
+      border-bottom: none;
+    }
+
+    .accordionContent {
+      padding: 0 20px;
+      max-height: 1px;
+      margin-top: -1px;
+      opacity: 0.01;
+      overflow: hidden;
+    }
+  }
+}

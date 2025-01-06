@@ -1,0 +1,30 @@
+@use '../../../styles/themes/monochrome/palette';
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$statusDefCon3Color: #fc0 !default;
+$statusDefCon3Bg: radial-gradient(circle at 60% 40%, #fc0 0, #f00 30%, #c00) !default;
+$statusAlertColor: #f00 !default;
+$statusWarnColor: #fc0 !default;
+$statusInfoColor: #999 !default;
+$statusSuccessColor: #063 !default;
+$statusDefCon3LightBg: #fc0 radial-gradient(circle at 60% 40%, #fc0 0, #f00 30%, #c00) !default;
+$statusAlertLightBg: #c00 radial-gradient(circle at 60% 40%, #fff 0, #f00 30%, #c00) !default;
+$statusWarnLightBg: #fc0 radial-gradient(circle at 60% 40%, #fff 0, #fc0 30%, #fc0) !default;
+$statusInfoLightBg: #ccc radial-gradient(circle at 60% 40%, #fff 0, #{tintsAndShades.$neutral-80} 30%, #ccc) !default;
+$statusSuccessLightBg: #063 radial-gradient(circle at 60% 40%, #fff 0, #096 30%, #063) !default;
+$statusDefCon3ShadowColor: #c00 !default;
+
+@mixin statusIndicatorsVariables {
+  --statusDefCon3Color: #{$statusDefCon3Color};
+  --statusDefCon3Bg: #{$statusDefCon3Bg};
+  --statusAlertColor: #{$statusAlertColor};
+  --statusWarnColor: #{$statusWarnColor};
+  --statusInfoColor: #{$statusInfoColor};
+  --statusSuccessColor: #{$statusSuccessColor};
+  --statusDefCon3LightBg: #{$statusDefCon3LightBg};
+  --statusAlertLightBg: #{$statusAlertLightBg};
+  --statusWarnLightBg: #{$statusWarnLightBg};
+  --statusInfoLightBg: #{$statusInfoLightBg};
+  --statusSuccessLightBg: #{$statusSuccessLightBg};
+  --statusDefCon3ShadowColor: #{$statusDefCon3ShadowColor};
+}

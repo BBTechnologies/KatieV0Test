@@ -1,0 +1,144 @@
+@use '../../../styles/shared/utilities/mixins';
+
+.chip {
+  @include mixins.rowLayout($gap: 5px, $justifyContent: center);
+  box-sizing: border-box;
+  font-weight: normal;
+  border: 2px solid;
+  width: max-content;
+
+  small {
+    display: block;
+    line-height: var(--chipFontAdjust);
+    height: 1em;
+  }
+
+  // Color variations
+  &.chip_yellow {
+    background: #fc0;
+    color: #222;
+    border-color: #fc0;
+  }
+
+  &.chip_orange {
+    background: #ff7300;
+    color: #222;
+    border-color: #ff7300;
+  }
+
+  &.chip_red {
+    background: #e00;
+    color: #fff;
+    border-color: #e00;
+    &.chip_outline {
+      color: #e00;
+    }
+  }
+
+  &.chip_purple {
+    background: #b3d;
+    color: #fff;
+    border-color: #b3d;
+    &.chip_outline {
+      color: #b3d;
+    }
+  }
+
+  &.chip_blue {
+    background: #69f;
+    color: #222;
+    border-color: #69f;
+  }
+
+  &.chip_green {
+    background: #3a6;
+    color: #222;
+    border-color: #3a6;
+  }
+
+  &.chip_black {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+    &.chip_outline {
+      color: #000;
+    }
+  }
+
+  &.chip_white {
+    background: #fff;
+    color: #222;
+    border-color: #fff;
+    &.chip_outline {
+      background: #000;
+      color: #fff;
+    }
+  }
+
+  &.chip_darkgrey {
+    background: #666;
+    color: #fff;
+    border-color: #666;
+    &.chip_outline {
+      color: #666;
+    }
+  }
+
+  &.chip_lightgrey {
+    background: #eee;
+    color: #222;
+    border-color: #eee;
+    &.chip_outlineInverse {
+      color: #eee;
+    }
+  }
+
+  // Size variations
+  &.chip_xs {
+    small {
+      font-size: 11px;
+    }
+    height: 16px;
+    border-radius: 8px;
+  }
+  &.chip_s {
+    small {
+      font-size: 13px;
+    }
+    height: 20px;
+    border-radius: 10px;
+  }
+  &.chip_m {
+    small {
+      font-size: 15px;
+    }
+    padding: 0 10px;
+    height: 30px;
+    border-radius: 15px;
+  }
+  &.chip_l {
+    small {
+      font-size: 18px;
+    }
+    padding: 0 15px;
+    height: 40px;
+    border-radius: 20px;
+  }
+  &.chip_xl {
+    small {
+      font-size: 22px;
+    }
+    padding: 0 15px;
+    height: 50px;
+    border-radius: 25px;
+  }
+
+  &.chip_outline {
+    background: #fff;
+  }
+
+  &.chip_outlineInverse {
+    background: #000;
+    color: #fff;
+  }
+}

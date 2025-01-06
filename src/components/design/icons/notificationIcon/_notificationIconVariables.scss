@@ -1,0 +1,11 @@
+$notificationIconBg: #c00 !default;
+$notificationIconFg: #fff !default;
+$notificationIconBorder: 4px solid #c00 !default;
+$notificationIconBoxShadow: none !default;
+
+@mixin notificationIconVariables {
+  --notificationIconBg: #{$notificationIconBg};
+  --notificationIconFg: #{$notificationIconFg};
+  --notificationIconBorder: #{$notificationIconBorder};
+  --notificationIconBoxShadow: #{$notificationIconBoxShadow};
+}

@@ -1,0 +1,5 @@
+@use '../../../../styles/shared/utilities/mixins';
+
+.statusLightsBar {
+  @include mixins.rowLayout();
+}

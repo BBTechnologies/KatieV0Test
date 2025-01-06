@@ -1,0 +1,128 @@
+@use "palette";
+@use '../../shared/partials/colors/tintsAndShades';
+
+@mixin buttonVariables {
+  --buttonBorderRadius: 3px;
+  --buttonHoverTransition: none;
+  --buttonActiveTextDecoration: underline;
+
+  --primaryButtonBg: #{tintsAndShades.$neutral-70};
+  --primaryButtonBorder: 1px solid #{tintsAndShades.$neutral-70};
+  --primaryButtonFgColor: #{tintsAndShades.$neutral-20};
+  --primaryButtonFocusOutline: 1px solid #{tintsAndShades.$neutral-50};
+
+  --primaryButtonBgHover: #{tintsAndShades.$neutral-60};
+  --primaryButtonFgColorHover: #{tintsAndShades.$neutral-10};
+  --primaryButtonBorderHover: 1px solid #{tintsAndShades.$neutral-60};
+
+  --primaryButtonInverseBg: #{tintsAndShades.$neutral-30};
+  --primaryButtonInverseBorder: 1px solid #{tintsAndShades.$neutral-30};
+  --primaryButtonInverseFgColor: #{tintsAndShades.$neutral-90};
+  --primaryButtonInverseFocusOutline: 1px solid #{tintsAndShades.$neutral-10};
+
+  --primaryButtonInverseBgHover: #{tintsAndShades.$neutral-20};
+  --primaryButtonInverseFgColorHover: #{tintsAndShades.$neutral-95};
+  --primaryButtonInverseBorderHover: 1px solid #{tintsAndShades.$neutral-20};
+
+  --primaryButtonDisabledBg: #{tintsAndShades.$neutral-50};
+  --primaryButtonDisabledBorder: 1px solid #{tintsAndShades.$neutral-50};
+  --primaryButtonDisabledFgColor: #{tintsAndShades.$neutral-20};
+  --primaryButtonDisabledBgHover: #{tintsAndShades.$neutral-50};
+  --primaryButtonDisabledFgColorHover: #{tintsAndShades.$neutral-20};
+  --primaryButtonDisabledBorderHover: #{tintsAndShades.$neutral-50};
+  --primaryButtonDisabledFocusOutline: 1px solid #{tintsAndShades.$neutral-40};
+
+  --primaryButtonOutlineStyleBg: transparent;
+  --primaryButtonOutlineStyleBorder: 1px solid #{tintsAndShades.$neutral-80};
+  --primaryButtonOutlineStyleFgColor: #{tintsAndShades.$neutral-20};
+  --primaryButtonOutlineStyleBgHover: transparent;
+  --primaryButtonOutlineStyleFgColorHover: #{tintsAndShades.$neutral-30};
+  --primaryButtonOutlineStyleBorderHover: 1px solid #{tintsAndShades.$neutral-30};
+  --primaryButtonOutlineStyleFocusOutline: 1px solid #{tintsAndShades.$neutral-30};
+
+  --primaryButtonOutlineInvertStyleBg: transparent;
+  --primaryButtonOutlineInvertStyleBorder: 1px solid #{tintsAndShades.$neutral-30};
+  --primaryButtonOutlineInvertStyleFgColor: #{tintsAndShades.$neutral-30};
+  --primaryButtonOutlineInvertStyleBgHover: transparent;
+  --primaryButtonOutlineInvertStyleFgColorHover: #{tintsAndShades.$neutral-20};
+  --primaryButtonOutlineInvertStyleBorderHover: 1px solid #{tintsAndShades.$neutral-20};
+  --primaryButtonOutlineInvertStyleFocusOutline: 1px solid #{tintsAndShades.$neutral-10};
+  
+  --secondaryButtonBg: #{tintsAndShades.$neutral-50};
+  --secondaryButtonBorder: 1px solid #{tintsAndShades.$neutral-50};
+  --secondaryButtonFgColor: #{tintsAndShades.$neutral-10};
+  --secondaryButtonBgHover: #{tintsAndShades.$neutral-40};
+  --secondaryButtonFgColorHover: #000;
+  --secondaryButtonBorderHover: 1px solid #{tintsAndShades.$neutral-40};
+  --secondaryButtonFocusOutline: 1px solid #{tintsAndShades.$neutral-30};
+  --secondaryButtonInverseBg: #{tintsAndShades.$neutral-10};
+  --secondaryButtonInverseBorder: 1px solid #{tintsAndShades.$neutral-10};
+  --secondaryButtonInverseFgColor: #f2f2f2;
+  --secondaryButtonInverseBgHover: #{tintsAndShades.$neutral-40};
+  --secondaryButtonInverseFgColorHover: #fff;
+  --secondaryButtonInverseBorderHover: 1px solid #{tintsAndShades.$neutral-40};
+  --secondaryButtonInverseFocusOutline: 1px solid #{tintsAndShades.$neutral-40};
+  --secondaryButtonDisabledBg: #{tintsAndShades.$neutral-70};
+  --secondaryButtonDisabledBorder: 1px solid #{tintsAndShades.$neutral-70};
+  --secondaryButtonDisabledFgColor: #{tintsAndShades.$neutral-10};
+  --secondaryButtonDisabledBgHover: #{tintsAndShades.$neutral-70};
+  --secondaryButtonDisabledFgColorHover: #{tintsAndShades.$neutral-10};
+  --secondaryButtonDisabledBorderHover: 1px solid #{tintsAndShades.$neutral-70};
+  --secondaryButtonDisabledFocusOutline: 1px solid #{tintsAndShades.$neutral-60};
+  --secondaryButtonOutlineStyleBg: transparent;
+  --secondaryButtonOutlineStyleBorder: 1px solid #{tintsAndShades.$neutral-30};
+  --secondaryButtonOutlineStyleFgColor: #{tintsAndShades.$neutral-40};
+  --secondaryButtonOutlineStyleBgHover: transparent;
+  --secondaryButtonOutlineStyleFgColorHover: #{tintsAndShades.$neutral-10};
+  --secondaryButtonOutlineStyleBorderHover: 1px solid #{tintsAndShades.$neutral-10};
+  --secondaryButtonOutlineStyleFocusOutline: 1px solid #{tintsAndShades.$neutral-10};
+  --secondaryButtonOutlineInvertStyleBg: transparent;
+  --secondaryButtonOutlineInvertStyleBorder: 1px solid #{tintsAndShades.$neutral-10};
+  --secondaryButtonOutlineInvertStyleFgColor: #{tintsAndShades.$neutral-10};
+  --secondaryButtonOutlineInvertStyleBgHover: transparent;
+  --secondaryButtonOutlineInvertStyleFgColorHover: #{tintsAndShades.$neutral-40};
+  --secondaryButtonOutlineInvertStyleBorderHover: 1px solid #{tintsAndShades.$neutral-40};
+  --secondaryButtonOutlineInvertStyleFocusOutline: 1px solid #{tintsAndShades.$neutral-40};
+  --tertiaryButtonBg: #384147;
+  --tertiaryButtonBorder: 1px solid #384147;
+  --tertiaryButtonFgColor: #fff;
+  --tertiaryButtonBgHover: #{tintsAndShades.$neutral-30};
+  --tertiaryButtonFgColorHover: #fff;
+  --tertiaryButtonBorderHover: 1px solid #{tintsAndShades.$neutral-30};
+  --tertiaryButtonFocusOutline: 1px solid #{tintsAndShades.$neutral-70};
+  --tertiaryButtonInverseBg: #{tintsAndShades.$neutral-80};
+  --tertiaryButtonInverseBorder: 1px solid #{tintsAndShades.$neutral-80};
+  --tertiaryButtonInverseFgColor: #{palette.$baseTextColor};
+  --tertiaryButtonInverseBgHover: #{tintsAndShades.$neutral-60};
+  --tertiaryButtonInverseFgColorHover: #000;
+  --tertiaryButtonInverseBorderHover: 1px solid #{tintsAndShades.$neutral-60};
+  --tertiaryButtonInverseFocusOutline: 1px solid #{tintsAndShades.$neutral-10};
+  --tertiaryButtonDisabledBg: #{tintsAndShades.$neutral-10};
+  --tertiaryButtonDisabledBorder: 1px solid #{tintsAndShades.$neutral-10};
+  --tertiaryButtonDisabledFgColor: #{tintsAndShades.$neutral-90};
+  --tertiaryButtonDisabledBgHover: #{tintsAndShades.$neutral-10};
+  --tertiaryButtonDisabledFgColorHover: #{tintsAndShades.$neutral-90};
+  --tertiaryButtonDisabledBorderHover: 1px solid #{tintsAndShades.$neutral-10};
+  --tertiaryButtonDisabledFocusOutline: 1px solid #{tintsAndShades.$neutral-20};
+  --tertiaryButtonOutlineStyleBg: transparent;
+  --tertiaryButtonOutlineStyleBorder: 1px solid #{tintsAndShades.$neutral-70};
+  --tertiaryButtonOutlineStyleFgColor: #{tintsAndShades.$neutral-30};
+  --tertiaryButtonOutlineStyleBgHover: transparent;
+  --tertiaryButtonOutlineStyleFgColorHover: #{tintsAndShades.$neutral-70};
+  --tertiaryButtonOutlineStyleBorderHover: 1px solid #{tintsAndShades.$neutral-70};
+  --tertiaryButtonOutlineStyleFocusOutline: 1px solid #{tintsAndShades.$neutral-60};
+  --tertiaryButtonOutlineInvertStyleBg: transparent;
+  --tertiaryButtonOutlineInvertStyleBorder: 1px solid #{tintsAndShades.$neutral-80};
+  --tertiaryButtonOutlineInvertStyleFgColor: #{tintsAndShades.$neutral-80};
+  --tertiaryButtonOutlineInvertStyleBgHover: transparent;
+  --tertiaryButtonOutlineInvertStyleFgColorHover: #{tintsAndShades.$neutral-95};
+  --tertiaryButtonOutlineInvertStyleBorderHover: 1px solid #{tintsAndShades.$neutral-95};
+  --tertiaryButtonOutlineInvertStyleFocusOutline: 1px solid #{tintsAndShades.$neutral-70};
+  --textOnlyColor: #{tintsAndShades.$neutral-30};
+  --textOnlyInverseColor: #{tintsAndShades.$neutral-95};
+  --textOnlyActiveFgColor: #{tintsAndShades.$neutral-10};
+  --textOnlyActiveBg: transparent;
+  --textOnlyFocusBg: transparent;
+  --textOnlyHoverBg: transparent;
+  --textOnlyFocusOutline: 1px dotted #{tintsAndShades.$neutral-30};
+}

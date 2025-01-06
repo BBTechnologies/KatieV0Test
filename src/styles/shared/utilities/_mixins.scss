@@ -1,0 +1,107 @@
+@use "sass:map";
+$responsive: (
+  defaultRange: 4,
+  ranges: (1:599, 2:767, 3:992, 4:1169)
+);
+
+$screenTouchSize: 44px !default;
+$defaultFlexGap: 10px !default;
+$wideFlexGap: 20px !default;
+
+@mixin rowLayout($gap: $defaultFlexGap, $alignItems: center, $justifyContent: flex-start) {
+  display: flex;
+  flex-direction: row;
+  column-gap: #{$gap};
+  align-items: #{$alignItems};
+  justify-content: #{$justifyContent};
+}
+
+@mixin columnLayout($gap: $defaultFlexGap, $alignItems: center, $justifyContent: flex-start) {
+  display: flex;
+  flex-direction: column;
+  row-gap: #{$gap};
+  align-items: #{$alignItems};
+  justify-content: #{$justifyContent};
+}
+
+@mixin columnLayoutCenterAlign {
+  @include columnLayout;
+  align-items: center;
+}
+
+@mixin mediaQuery($bpNumber, $isMin, $bpOnly){
+  $minWidth: 0;
+  @if $bpNumber != 1 {
+    $previousBp: $bpNumber - 1;
+    $minWidth: map.get(map.get($responsive, ranges), $previousBp)+1;
+  }
+
+  $maxWidth: map.get(map.get($responsive, ranges),$bpNumber);
+
+  @if $bpOnly {
+    @if $isMin {
+      @media all and (min-width: #{$minWidth}px) {
+        @content;
+      }
+    } @else {
+      @media all and (min-width: #{$minWidth}px) and (max-width: #{$maxWidth}px) {
+        @content;
+      }
+    }
+  } @else {
+    @if $isMin {
+      @media all and (min-width: #{$minWidth}px) {
+        @content;
+      }
+    } @else {
+      @media all and (max-width: #{$maxWidth}px) {
+        @content;
+      }
+    }
+  }
+}
+
+/* Popovers */
+@mixin popover() {
+  box-shadow: var(--popoverShadow);
+  background: var(--popoverBg);
+  border-radius: var(--inputBorderRadius);
+  padding: 5px;
+  z-index: 10;
+  max-height: 50vh;
+  overflow: auto;
+}
+
+@mixin removeBullets () {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin fixedHeaderFooter () {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@mixin overflowText () {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: fit-content;
+}
+
+@mixin animationStop($multi, $delay) {
+  @if $multi {
+    animation-delay: 0s, $delay;
+    animation-iteration-count: 1, 1;
+    animation-fill-mode: forwards, forwards;
+  } @else {
+    animation-delay: $delay;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+}

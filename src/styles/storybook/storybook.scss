@@ -1,0 +1,202 @@
+$sidePanelSizeSmall: 44px;
+$sidePanelSizeMedium: 300px;
+$sidePanelSizeLarge: 420px;
+
+/* Layouts with side panels */
+body.sb-show-main.withSidePanels {
+  padding: 0;
+
+  &.sb-main-fullscreen {
+    padding: 0;
+  }
+
+  .innerZoomElementWrapper {
+    padding: 0;
+  }
+
+  &.sidePanel_s_left .innerZoomElementWrapper { padding-left: $sidePanelSizeSmall; }
+  &.sidePanel_m_left .innerZoomElementWrapper { padding-left: $sidePanelSizeMedium;}
+  &.sidePanel_l_left .innerZoomElementWrapper { padding-left: $sidePanelSizeLarge;}
+  &.sidePanel_s_right .innerZoomElementWrapper { padding-right: $sidePanelSizeSmall;}
+  &.sidePanel_m_right .innerZoomElementWrapper { padding-right: $sidePanelSizeMedium;}
+  &.sidePanel_l_right .innerZoomElementWrapper { padding-right: $sidePanelSizeLarge;}
+  &.sidePanel_s_top .innerZoomElementWrapper { padding-top: $sidePanelSizeSmall;}
+  &.sidePanel_m_top .innerZoomElementWrapper { padding-top: $sidePanelSizeMedium;}
+  &.sidePanel_l_top .innerZoomElementWrapper { padding-top: $sidePanelSizeLarge;}
+  &.sidePanel_s_bottom .innerZoomElementWrapper { padding-bottom: $sidePanelSizeSmall;}
+  &.sidePanel_m_bottom .innerZoomElementWrapper { padding-bottom: $sidePanelSizeMedium;}
+  &.sidePanel_l_bottom .innerZoomElementWrapper { padding-bottom: $sidePanelSizeLarge;}
+}
+
+.cssClassDemos {
+  display: flex;
+  column-gap: 20px;
+
+  &.cssClassDemosFlexLayouts {
+    flex-wrap: wrap;
+  }
+
+  &.cssClassDemosFlexLayoutsColumn {
+    .cssClassFlexDemo {
+      position: relative;
+      &:before {
+        content: 'Height 400px';
+        position: absolute;
+        box-sizing: border-box;
+        z-index: 2;
+        bottom: 15px;
+        left: 7px;
+        transform: rotate(-90deg);
+        font-size: 13px;
+        display: block;
+        flex: none;
+        color: #000;
+        width: 400px;
+        height: 10px;
+        text-align: center;
+        transform-origin: left;
+        border: 1px solid #000;
+        border-width: 0 1px;
+        background-image: linear-gradient(90deg, black 150px, white 151px, white 250px, black 251px);
+        background-size: 400px 1px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .flexColumn {
+        height: 400px;
+        position: relative;
+        z-index: 1;
+
+      }
+    }
+  }
+
+  .cssClassDemo {
+    border: 1px solid #eee;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    margin: 20px 0 40px;
+    box-sizing: border-box;
+
+
+    .demoElement {
+      background: #f2f2f2;
+      color: #f2f2f2;
+      font-size: 11px;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+}
+
+.typographyDemo {
+  position: relative;
+  border: 1px solid #eee;
+  padding: 20px;
+  margin: 0 0 40px;
+
+  &:before {
+    content: attr(title);
+    text-transform: uppercase;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #fff;
+    padding: 0 10px;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 13px;
+  }
+}
+
+.buttonStylesDemo {
+  .buttonStatesDemos,
+  .buttonSizeDemos {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    row-gap: 10px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 20px 0 30px;
+  }
+
+  .demoOnBlack {
+    padding: 10px;
+    background: #000;
+  }
+
+  .demoOnWhite {
+    padding: 10px;
+    background: #fff;
+  }
+
+  h2 {
+    margin: 40px 0 10px;
+  }
+}
+
+.iconSetsPreview {
+  h2 {
+    margin: 40px 0 10px;
+  }
+  ul {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    row-gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      align-items: center;
+      justify-content: center;
+      width: 300px;
+
+      .icon {
+        font-size: 30px;
+      }
+
+      code {
+        font-size: 13px;
+        font-family: 'Operator Mono', 'Fira Code Retina', 'Fira Code', 'FiraCode-Retina', 'Andale Mono', 'Lucida Console', Consolas, Monaco, monospace;
+      }
+    }
+  }
+}
+
+.tooltipsPreview {
+  p, h3 {
+    margin: 20px 0;
+  }
+}
+
+#trigger1.demoDialogTrigger {
+  position: fixed;
+  z-index: 3;
+  background: #000;
+  color: #fff;
+}
+
+.searchPanelMenuDemo,
+.popupMenuDemo {
+  height: 600px;
+}
+
+.popupMenuDemo {
+  padding: 200px 0;
+  text-align: center;
+
+  > p {
+    margin: 20px 0;
+  }
+  .demoBar {
+    display: flex;
+    justify-content: center;
+  }
+}

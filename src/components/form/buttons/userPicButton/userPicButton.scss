@@ -1,0 +1,37 @@
+@use '../../../../styles/shared/utilities/mixins';
+
+.userPicButton {
+  .userPicFallbacks {
+    position: relative;
+    width: mixins.$screenTouchSize - 2;
+    height: mixins.$screenTouchSize - 2;
+
+    > span, > .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .userPic {
+    background-size: cover;
+    background-position: center;
+    z-index: 3;
+  }
+
+  .userInitials {
+    background: var(--primaryButtonBg);
+    z-index: 2;
+    font-weight: bold;
+  }
+
+  .userPicFallbackIcon {
+    z-index: 1;
+    font-size: 24px;
+  }
+}

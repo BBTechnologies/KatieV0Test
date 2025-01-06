@@ -1,0 +1,7 @@
+@use '../../../components/navigation/searchPanelMenu/searchPanelMenuVariables';
+@use '../../../components/navigation/popupMenu/popupMenuVariables';
+
+:root {
+  @include searchPanelMenuVariables.searchPanelMenuVariables;
+  @include popupMenuVariables.popupMenuVariables;
+}

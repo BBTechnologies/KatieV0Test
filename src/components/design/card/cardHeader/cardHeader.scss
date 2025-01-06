@@ -1,0 +1,48 @@
+@use '../../../../styles/shared/partials/buttons/buttonMixins';
+@use '../../../../styles/shared/partials/typography/typography';
+@use '../../../../styles/shared/utilities/mixins';
+
+.cardHeader {
+  @include mixins.rowLayout($justifyContent: space-between);
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: var(--cardHeaderPadding);
+  border-bottom: var(--cardHeaderBorder);
+  box-shadow: var(--cardHeaderBoxShadow);
+  border-radius: var(--cardHeaderBorderRadius);
+  background: var(--cardHeaderBg);
+  color: var(--cardHeaderFg);
+  font-family: var(--cardHeaderFont), 'serif';
+  font-size: var(--cardHeaderFontSize);
+
+  .cardHeaderItem {
+    @include mixins.rowLayout();
+
+    .cardHeaderItemLink {
+      @include mixins.rowLayout();
+      text-decoration: none;
+      color: inherit;
+
+
+      .icon {
+        display: block;
+        font-size: 40px;
+        line-height: 36px;
+        height: 40px;
+        overflow: hidden;
+        display: block;
+
+        .icon-xgraph-large {
+          font-size: 80px;
+        }
+      }
+    }
+
+    &:hover {
+      .ownerDetailsPopup {
+        opacity: 1;
+      }
+    }
+  }
+}

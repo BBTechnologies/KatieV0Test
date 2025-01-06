@@ -1,0 +1,344 @@
+@use 'sass:math';
+@use '../utilities/mixins';
+@use 'formUtilities';
+
+form {
+  &.columnLayout {
+    @include mixins.rowLayout($gap: 20px, $alignItems: flex-start);
+    .formField {
+      flex: 1;
+    }
+  }
+
+  &.rowLayout {
+    @include mixins.columnLayout($gap: 20px, $alignItems: flex-start);
+    .formField {
+      flex: 1;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  // Wraps all the form pieces
+  .formField {
+    // Label on top of field
+    &.stacked {
+      label {
+        @include mixins.columnLayout($gap: 0, $alignItems: flex-start);
+        position: relative;
+
+        .labelText,
+        .inputContainer,
+        .validation {
+          width: 100%;
+          flex: 1;
+        }
+
+        .validation {
+          @include mixins.rowLayout($alignItems: top);
+          height: 25px;
+          position: absolute;
+          bottom: 0;
+        }
+      }
+    }
+
+    /* Leave space for validators */
+    &.withValidation {
+      label {
+        padding-bottom: 30px;
+      }
+    }
+
+    &.insetLabel {
+      .inputContainer {
+        position: relative;
+        .labelText {
+          position: absolute;
+          margin-left: 5px;
+          font-size: 13px;
+          line-height: 16px;
+          transition: all 1s ease;
+          z-index: 1;
+          top: 0;
+          left: 10px;
+        }
+
+        select,
+        input,
+        textarea {
+          padding-top: 10px;
+          &:placeholder-shown {
+            padding-top: 0;
+            + .labelText,
+            ~ .labelText {
+              opacity: 0.01;
+            }
+
+            &:focus {
+              + .labelText,
+              ~ .labelText {
+                opacity: 0.01;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.horizontal {
+      margin-bottom: 20px;
+
+      label {
+        @include mixins.rowLayout($gap: 20px);
+
+        .labelText,
+        .inputContainer,
+        .validation {
+          box-sizing: border-box;
+        }
+
+        .labelText,
+        .validation {
+          width: 20%;
+        }
+
+        .inputContainer {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  // Wraps the input field, any prefield/postfield custom content and any field icons
+  .inputContainer {
+    @include mixins.rowLayout();
+  }
+
+  // Label wraps the input, .labelText and spans containing error messages etc
+  label {
+    color: var(--inputLabelColor);
+
+    .labelText {
+      display: inline-block;
+      margin: 5px 0;
+      font-size: var(--inputLabelFontSize);
+      font-weight: var(--inputLabelFontWeight);
+      line-height: var(--inputLabelLineHeight);
+    }
+
+    &.withSpinner {
+      position: relative;
+      .spinner,
+      .spinner svg,
+      svg {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+      }
+      .spinner {
+        top: auto;
+        left: auto;
+        right: 10px;
+        bottom: calc(50% - 10px);
+      }
+    }
+  }
+
+  input,
+  textarea,
+  select {
+    @include formUtilities.baseInputFields;
+
+    &[disabled] {
+      cursor: not-allowed;
+    }
+
+    &:focus,
+    &:focus-visible {
+      border: var(--inputFocusBorder);
+      color: var(--inputFocusColor);
+      outline: var(--inputFocusOutline, 1px solid #000);
+      background: var(--inputFocusBgColor);
+    }
+
+    &:hover {
+      outline: var(--inputHoverOutline);
+    }
+
+    &.error,
+    &.invalidField:not([disabled]),
+    .touched &:invalid {
+      border: var(--inputErrorBorder);
+      color: var(--inputErrorColor);
+      background: var(--inputErrorBgColor);
+    }
+
+    &[readonly],
+    &[readonly]:focus {
+      border: var(--inputReadonlyBorder);
+      outline: none;
+      color: var(--inputReadonlyColor);
+      background: var(--inputReadonlyBgColor);
+    }
+
+    // Note these need to be separate to work
+    &::-webkit-input-placeholder {
+      color: var(--inputPlaceholderColor);
+      font-weight: 200;
+      font-family: var(--bodyFont);
+    }
+    &:-moz-placeholder {
+      color: var(--inputPlaceholderColor);
+      font-weight: 200;
+      font-family: var(--bodyFont);
+    }
+    &::-moz-placeholder {
+      color: var(--inputPlaceholderColor);
+      font-weight: 200;
+      font-family: var(--bodyFont);
+    }
+    &:-ms-input-placeholder {
+      color: var(--inputPlaceholderColor);
+      font-weight: 200;
+      font-family: var(--bodyFont);
+    }
+    &::placeholder {
+      color: var(--inputPlaceholderColor);
+      font-weight: 200;
+      font-family: var(--bodyFont);
+    }
+    &:placeholder-shown {
+      color: var(--inputPlaceholderColor);
+      font-weight: 200;
+      font-family: var(--bodyFont);
+    }
+  }
+
+  input[type='number'] {
+    padding-right: 0;
+  }
+
+  input[type='date'] {
+    padding-right: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+  }
+
+  .nativeDateInput {
+    label {
+      position: relative;
+    }
+
+    button.inputDateCalendarButton {
+      position: absolute;
+      right: 5px;
+      margin-top: -50px;
+    }
+
+    @supports (-moz-appearance:none) {
+      button.inputDateCalendarButton {
+        display: none;
+      }
+    }
+  }
+
+  textarea {
+    height: calc(var(--inputHeight) * 2);
+    line-height: 20px;
+    padding: 10px;
+  }
+
+  select {
+    option {
+      // Remove annoying indent on options in Chrome
+      -webkit-appearance: none;
+    }
+  }
+
+  .statusMessage {
+    &.success,
+    &.error {
+      padding: 10px;
+    }
+
+    &.error {
+      background: var(--errorBg);
+      color: var(--errorFgColor);
+    }
+
+    &.success {
+      background: var(--successBg);
+      color: var(--successFgColor);
+    }
+  }
+
+  fieldset {
+    display: flex;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .validation {
+    > .message {
+      display: block;
+      font-size: 13px;
+      line-height: 15px;
+      color: var(--errorFgColor);
+    }
+  }
+}
+
+label.keyValuePair {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: normal;
+  flex-wrap: wrap;
+
+  .labelText {
+    text-transform: capitalize;
+  }
+  .labelText,
+  .value {
+    display: block;
+  }
+}
+
+.labelValuePair {
+  @include mixins.rowLayout($gap: 5px, $alignItems: center, $justifyContent: flex-start);
+  .labelText {
+    @include mixins.rowLayout($gap: 5px, $alignItems: center, $justifyContent: flex-start);
+    flex: 1;
+  }
+  .valueText {
+    @include mixins.rowLayout($gap: 5px, $alignItems: center, $justifyContent: flex-start);
+    flex: 1;
+  }
+}
+
+.mandatory {
+  text-decoration: var(--mandatorySymbolDecoration);
+  text-underline-offset: var(--mandatorySymbolUnderlineOffset);
+
+  &:before {
+    content: var(--mandatorySymbolContent);
+    color: var(--mandatorySymbolColor);
+  }
+}
+
+/* Disabled groups of fields */
+fieldset {
+  &[disabled] {
+    input, textarea, select, button, .radioLabel {
+      cursor: not-allowed;
+      opacity: 0.75;
+    }
+  }
+}

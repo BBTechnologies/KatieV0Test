@@ -1,0 +1,105 @@
+@use '../../../styles/themes/monochrome/palette';
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$cardMinWidth: 450px !default;
+$cardMaxWidth: 450px !default;
+
+$cardMinWidthXSmall: 150px !default;
+$cardMaxWidthXSmall: 150px !default;
+
+$cardMinWidthSmall: 300px !default;
+$cardMaxWidthSmall: 300px !default;
+
+$cardMinWidthMedium: 450px !default;
+$cardMaxWidthMedium: 450px !default;
+
+$cardMinWidthLarge: 600px !default;
+$cardMaxWidthLarge: 600px !default;
+
+$cardMinWidthXLarge: 750px !default;
+$cardMaxWidthXLarge: 750px !default;
+
+$cardMinWidthAuto: auto !default;
+$cardMaxWidthAuto: auto !default;
+
+$cardHeaderFont: serif !default;
+$cardHeaderFontSize: 21px !default;
+$cardHeaderFontWeight: bold !default;
+$cardBorder: 1px solid #{tintsAndShades.$neutral-90} !default;
+$cardBoxShadow: 0 0 5px 0 #{tintsAndShades.$neutral-90} !default;
+$cardBorderRadius: 3px !default;
+
+$cardHeaderBg: palette.$inverseTextColor !default;
+$cardHeaderFg: palette.$baseTextColor !default;
+$cardHeaderBorderRadius: 3px 3px 0 0 !default;
+$cardHeaderBorder: 1px solid #{tintsAndShades.$neutral-70} !default;
+$cardHeaderBoxShadow: 0 1px 3px 0 #{tintsAndShades.$neutral-90} !default;
+$cardHeaderIconColor: palette.$baseTextColor !default;
+
+$cardContentBg: palette.$inverseTextColor !default;
+$cardContentFg: palette.$baseTextColor !default;
+
+$cardFooterBg: palette.$inverseTextColor !default;
+$cardFooterFg: palette.$baseTextColor !default;
+$cardFooterBorder: 1px solid #{tintsAndShades.$neutral-70} !default;
+$cardFooterBoxShadow: 0 -1px 5px 0 #{tintsAndShades.$neutral-90} !default;
+$cardFooterBorderRadius: 0 0 3px 3px !default;
+
+$cardMargin: 0 0 20px !default;
+$cardContentPadding: 20px !default;
+$cardHeaderPadding: 10px 20px !default;
+$cardFooterPadding: 10px 20px !default;
+
+@mixin cardVariables {
+  --cardMinWidth: #{$cardMinWidth};
+  --cardMaxWidth: #{$cardMaxWidth};
+
+  --cardMinWidthXSmall: #{$cardMinWidthXSmall};
+  --cardMaxWidthXSmall: #{$cardMaxWidthXSmall};
+
+  --cardMinWidthSmall: #{$cardMinWidthSmall};
+  --cardMaxWidthSmall: #{$cardMaxWidthSmall};
+
+  --cardMinWidthMedium: #{$cardMinWidthMedium};
+  --cardMaxWidthMedium: #{$cardMaxWidthMedium};
+
+  --cardMinWidthLarge: #{$cardMinWidthLarge};
+  --cardMaxWidthLarge: #{$cardMaxWidthLarge};
+
+  --cardMinWidthXLarge: #{$cardMinWidthXLarge};
+  --cardMaxWidthXLarge: #{$cardMaxWidthXLarge};
+
+  --cardMinWidthAuto: #{$cardMinWidthAuto};
+  --cardMaxWidthAuto: #{$cardMaxWidthAuto};
+
+  --cardBg: transparent;
+  --cardBorder: #{$cardBorder};
+  --cardBorderRadius: #{$cardBorderRadius};
+  --cardBoxShadow: #{$cardBoxShadow};
+
+  --cardMargin: #{$cardMargin};
+  --cardContentPadding: #{$cardContentPadding};
+  --cardHeaderPadding: #{$cardHeaderPadding};
+  --cardFooterPadding: #{$cardFooterPadding};
+
+  --cardHeaderHeight: 60px;
+  --cardHeaderFont: #{$cardHeaderFont};
+  --cardHeaderFontSize: #{$cardHeaderFontSize};
+  --cardHeaderFontWeight: #{$cardHeaderFontWeight};
+
+  --cardHeaderBg: #{$cardHeaderBg};
+  --cardHeaderFg: #{$cardHeaderFg};
+  --cardHeaderBorder: #{$cardHeaderBorder};
+  --cardHeaderBorderRadius: #{$cardHeaderBorderRadius};
+  --cardHeaderBoxShadow: #{$cardHeaderBoxShadow};
+  --cardHeaderIconColor: #{$cardHeaderIconColor};
+
+  --cardContentBg: #{$cardContentBg};
+  --cardContentFg: #{$cardContentFg};
+
+  --cardFooterBg: #{$cardFooterBg};
+  --cardFooterFg: #{$cardFooterFg};
+  --cardFooterBorder: #{$cardFooterBorder};
+  --cardFooterBorderRadius: #{$cardFooterBorderRadius};
+  --cardFooterBoxShadow: #{$cardFooterBoxShadow};
+}

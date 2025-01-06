@@ -1,0 +1,50 @@
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$searchPanelMenuBg: tintsAndShades.$neutral-90 !default;
+$searchPanelMenuBorder: 1px solid tintsAndShades.$neutral-70 !default;
+$searchPanelMenuBorderRadius: 3px !default;
+$searchPanelMenuBoxShadow: 0 0 5px 0 tintsAndShades.$neutral-60 !default;
+$searchPanelDivider: 1px solid tintsAndShades.$neutral-70 !default;
+
+$searchPanelMenuContentWidth: 280px !default;
+$searchPanelMenuContentHeight: 350px !default;
+
+$searchPanelMenuTriggerButtonBg: tintsAndShades.$neutral-80;
+$searchPanelMenuTriggerButtonBorder: 1px solid tintsAndShades.$neutral-80;
+$searchPanelMenuTriggerButtonFgColor: tintsAndShades.$neutral-20;
+$searchPanelMenuTriggerButtonBgHover: tintsAndShades.$neutral-70;
+$searchPanelMenuTriggerButtonFgColorHover: tintsAndShades.$neutral-10;
+$searchPanelMenuTriggerButtonBorderHover: 1px solid tintsAndShades.$neutral-70;
+
+$searchPanelMenuContentButtonBg: tintsAndShades.$neutral-90;
+$searchPanelMenuContentButtonBorder: 1px solid tintsAndShades.$neutral-90;
+$searchPanelMenuContentButtonFgColor: tintsAndShades.$neutral-20;
+$searchPanelMenuContentButtonBgHover: tintsAndShades.$neutral-70;
+$searchPanelMenuContentButtonFgColorHover: tintsAndShades.$neutral-10;
+$searchPanelMenuContentButtonBorderHover: 1px solid tintsAndShades.$neutral-70;
+
+@mixin searchPanelMenuVariables {
+  --searchPanelMenuBg: #{$searchPanelMenuBg};
+  --searchPanelMenuBorder: #{$searchPanelMenuBorder};
+  --searchPanelMenuBorderRadius: #{$searchPanelMenuBorderRadius};
+  --searchPanelMenuBoxShadow: #{$searchPanelMenuBoxShadow};
+
+  --searchPanelDivider: #{$searchPanelDivider};
+
+  --searchPanelMenuContentWidth: #{$searchPanelMenuContentWidth};
+  --searchPanelMenuContentHeight: #{$searchPanelMenuContentHeight};
+
+  --searchPanelMenuTriggerButtonBg: #{$searchPanelMenuTriggerButtonBg};
+  --searchPanelMenuTriggerButtonBorder: #{$searchPanelMenuTriggerButtonBorder};
+  --searchPanelMenuTriggerButtonFgColor: #{$searchPanelMenuTriggerButtonFgColor};
+  --searchPanelMenuTriggerButtonBgHover: #{$searchPanelMenuTriggerButtonBgHover};
+  --searchPanelMenuTriggerButtonFgColorHover: #{$searchPanelMenuTriggerButtonFgColorHover};
+  --searchPanelMenuTriggerButtonBorderHover: #{$searchPanelMenuTriggerButtonBorderHover};
+
+  --searchPanelMenuContentButtonBg: #{$searchPanelMenuContentButtonBg};
+  --searchPanelMenuContentButtonBorder: #{$searchPanelMenuContentButtonBorder};
+  --searchPanelMenuContentButtonFgColor: #{$searchPanelMenuContentButtonFgColor};
+  --searchPanelMenuContentButtonBgHover: #{$searchPanelMenuContentButtonBgHover};
+  --searchPanelMenuContentButtonFgColorHover: #{$searchPanelMenuContentButtonFgColorHover};
+  --searchPanelMenuContentButtonBorderHover: #{$searchPanelMenuContentButtonBorderHover};
+}

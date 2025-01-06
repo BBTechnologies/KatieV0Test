@@ -1,0 +1,56 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use '../../../styles/themes/monochrome/palette';
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$bubbleNavigatorFilterCheckboxUncheckedColor: tintsAndShades.$black-90 !default;
+$bubbleNavigatorFilterCheckboxCheckedColor: tintsAndShades.$black-50 !default;
+
+$bubbleTreeMinHeight: 520px !default;
+$bubbleBranchSize: 520px !default;
+$mainBubbleSize: 200px !default;
+$childBubbleSize: 150px !default;
+$mainBubbleCount2Scale: 0.7 !default;
+$bubbleStickyDotBg: radial-gradient(circle at 50% 35%, #c00, #000) !default;
+$bubbleStickyDotSize: 20px !default;
+
+$halfMainBubbleSize: math.div($mainBubbleSize, 2);
+$halfChildBubbleSize: math.div($childBubbleSize, 2);
+$quarterStickyDotSize: math.div($bubbleStickyDotSize, 4);
+
+$childBubbleAngles: (
+  1: (1:45),
+  2: (1:135, 2:0),
+  3: (1:135, 2:0, 3:250),
+  4: (1:115, 2:30, 3:250, 4:300),
+  5: (1:65, 2:10, 3:200, 4:270, 5:165),
+);
+
+$childBubbleFg: #fff !default;
+$childBubbleBgLightColor: #5cabff !default;
+$childBubbleBgDarkColor: #000 !default;
+$childBubbleBgGradient: radial-gradient(circle at 50% 35%, var(--childBubbleBgLightColor), var(--childBubbleBgDarkColor)) !default;
+$childBubbleTextShadow: 1px 1px 3px #000 !default;
+
+$parentBubbleFg: #222 !default;
+$parentBubbleBgLightColor: #eee !default;
+$parentBubbleBgDarkColor: #000 !default;
+$parentBubbleBgGradient: radial-gradient(circle at 50% 35%, var(--parentBubbleBgLightColor), var(--parentBubbleBgDarkColor)) !default;
+$parentBubbleTextShadow: 1px 1px 3px #fff !default;
+
+:root {
+  --childBubbleFg: #{$childBubbleFg};
+  --childBubbleBgGradient: #{$childBubbleBgGradient};
+  --childBubbleBgLightColor: #{$childBubbleBgLightColor};
+  --childBubbleBgDarkColor: #{$childBubbleBgDarkColor};
+  --childBubbleAnimation: glowBubble 10s ease infinite;
+  --childBubbleTextShadow: #{$childBubbleTextShadow};
+
+  --parentBubbleFg: #{$parentBubbleFg};
+  --parentBubbleBgGradient: #{$parentBubbleBgGradient};
+  --parentBubbleBgLightColor: #{$parentBubbleBgLightColor};
+  --parentBubbleBgDarkColor: #{$parentBubbleBgDarkColor};
+  --parentBubbleAnimation: animateBubble 10s ease infinite;
+  --parentBubbleTextShadow: #{$parentBubbleTextShadow};
+}

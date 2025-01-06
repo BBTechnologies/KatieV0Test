@@ -1,0 +1,46 @@
+@use '../../../components/design/card/cardVariables';
+@use '../../../components/layout/mainHeader/mainHeaderVariables';
+@use '../../../components/design/sidePanel/sidePanelVariables';
+@use '../../../components/layout/dashboard/layouts/globalDashboard/globalDashboardVariables';
+@use '../../themes/monochrome/palette';
+@use '../../shared/partials/colors/tintsAndShades';
+
+$bodyBg: #fff !default;
+$bodyFgColor: #{tintsAndShades.$neutral-20} !default;
+$bodyFont: sans-serif !default;
+$headingFont: serif !default;
+
+$scrollBarFgColor: #{tintsAndShades.$neutral-50} !default;
+$scrollBarBgColor: #{tintsAndShades.$neutral-95} !default;
+
+$pageContainerMaxWidth: 1100px !default;
+
+$mainContentPadding: 20px 30px !default;
+$mainContentBg: none !default;
+$mainContentFgColor: #{tintsAndShades.$neutral-20} !default;
+
+:root {
+  --bodyBg: #{$bodyBg};
+  --bodyFgColor: #{$bodyFgColor};
+  --bodyFont: #{$bodyFont};
+  --headingFont: #{$headingFont};
+
+  --scrollBarFgColor: #{$scrollBarFgColor};
+  --scrollBarBgColor: #{$scrollBarBgColor};
+
+  --pageContainerMaxWidth: #{$pageContainerMaxWidth};
+
+  --mainContentPadding: #{$mainContentPadding};
+  --mainContentBg: #{$mainContentBg};
+  --mainContentFgColor: #{$mainContentFgColor};
+
+  --defaultSpacing: 20px;
+  --compactSpacing: 10px;
+  --wideSpacing: 40px;
+
+  @include mainHeaderVariables.mainHeaderVariables;
+  @include sidePanelVariables.sidePanelVariables;
+  @include cardVariables.cardVariables;
+  @include globalDashboardVariables.globalDashboardVariables;
+}
+

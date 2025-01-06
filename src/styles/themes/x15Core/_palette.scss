@@ -1,0 +1,40 @@
+@use 'sass:color';
+
+// Main theme colours
+// Note the brand pink is #ec008c but this is not accessible with white and looks awful with black
+
+$buttonTransition: background-color 0.4s ease;
+$primaryButtonBg: #e70077;
+$secondaryButtonBg: #a8bcc9;
+$tertiaryButtonBg: #24282b;
+
+$baseTextColor: #181a1b;
+$inverseTextColor: #f6f8fa;
+
+$baseTint: #fff;
+$inverseTint: #000;
+
+$palette1: #e70077;
+$palette2: #a8bcc9;
+
+$palette1_900: #3f0d25;
+$palette1_800: #741c46;
+$palette1_700: #b02568;
+$palette1_600: #c11769;
+$palette1_500: #ec008c;
+$palette1_400: #f347ae;
+$palette1_300: #f57cc5;
+$palette1_200: #f5b2db;
+$palette1_100: #ffd6ee;
+$palette1_50: #fff1f9;
+
+$palette2_900: #24282b;
+$palette2_800: #384147;
+$palette2_700: #516472;
+$palette2_600: #7e97a7;
+$palette2_500: #a8bcc9;
+$palette2_400: #c2d0d9;
+$palette2_300: #d3dee4;
+$palette2_200: #e5ebef;
+$palette2_100: #eef2f4;
+$palette2_50: #f6f8fa;

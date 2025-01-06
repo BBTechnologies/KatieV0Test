@@ -1,0 +1,6 @@
+
+$chipFontAdjust: 1em !default;
+
+@mixin chipVariables {
+  --chipFontAdjust: #{$chipFontAdjust};
+}

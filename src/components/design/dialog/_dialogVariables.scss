@@ -1,0 +1,56 @@
+@use '../../../styles/themes/monochrome/palette';
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$dialogOverlayColor: rgba(0, 0, 0, 0.5) !default;
+
+$dialogBg: #fff !default;
+$dialogFg: #222 !default;
+$dialogBorder: 1px solid #fff !default;
+$dialogBorderRadius: 3px !default;
+$dialogShadow: 0 0 10px 0 #{tintsAndShades.$neutral-30} !default;
+$dialogFocusOutline: 1px dotted #{tintsAndShades.$neutral-30} !default;
+
+$dialogHeaderHeight: 50px !default;
+$dialogHeaderBottomBorder: 1px solid #{tintsAndShades.$neutral-80} !default;
+$dialogHeaderShadow: 0 1px 3px 0 #{tintsAndShades.$neutral-80} !default;
+$dialogHeaderPadding: 0 20px !default;
+
+$dialogContentPadding: 20px !default;
+
+$dialogFooterPadding: 0 20px !default;
+$dialogFooterHeight: 50px !default;
+$dialogFooterTopBorder: 1px solid #{tintsAndShades.$neutral-80} !default;
+$dialogFooterShadow: 0 -1px 3px 0 #{tintsAndShades.$neutral-80} !default;
+
+$dialogCloseButtonBg: #fff !default;
+$dialogCloseButtonFg: #222 !default;
+$dialogCloseButtonBorder: 1px solid #{tintsAndShades.$neutral-80} !default;
+$dialogCloseButtonShadow: 0 0 5px 0 #{tintsAndShades.$neutral-10} !default;
+
+@mixin dialogVariables {
+  --dialogOverlayColor: #{$dialogOverlayColor};
+
+  --dialogBg: #{$dialogBg};
+  --dialogFg: #{$dialogFg};
+  --dialogBorder: #{$dialogBorder};
+  --dialogBorderRadius: #{$dialogBorderRadius};
+  --dialogShadow: #{$dialogShadow};
+  --dialogFocusOutline: #{$dialogFocusOutline};
+
+  --dialogHeaderPadding: #{$dialogHeaderPadding};
+  --dialogHeaderHeight: #{$dialogHeaderHeight};
+  --dialogHeaderBottomBorder: #{$dialogHeaderBottomBorder};
+  --dialogHeaderShadow: #{$dialogHeaderShadow};
+
+  --dialogContentPadding: #{$dialogContentPadding};
+
+  --dialogFooterPadding: #{$dialogFooterPadding};
+  --dialogFooterHeight: #{$dialogFooterHeight};
+  --dialogFooterTopBorder: #{$dialogFooterTopBorder};
+  --dialogFooterShadow: #{$dialogFooterShadow};
+
+  --dialogCloseButtonBorder: #{$dialogCloseButtonBorder};
+  --dialogCloseButtonBg: #{$dialogCloseButtonBg};
+  --dialogCloseButtonFg: #{$dialogCloseButtonFg};
+  --dialogCloseButtonShadow: #{$dialogCloseButtonShadow};
+}

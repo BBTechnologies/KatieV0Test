@@ -1,0 +1,121 @@
+/* TYPOGRAPHY */
+* {
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+html {
+  font-size: 10px; /* To make rem units easy to calculate and implement */
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bodyBg);
+  color: var(--bodyFgColor);
+  font-family: var(--bodyFont);
+  font-style: normal;
+}
+
+body {
+  font-size: 16px; /* Match min input font size that prevents zoom */
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--headingFont);
+}
+
+h1 { font-size: 36px; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 18px; }
+
+p, td, th, button, input, select, textarea {
+  font-family: var(--bodyFont);
+}
+
+h1, h2, h3, h4, p, ul, ol {
+  margin: 0;
+}
+
+header {
+  h1, h2, h3, h4 {
+    flex: 1;
+  }
+}
+
+p {
+  sup,
+  sub {
+    margin: -5px 0;
+    display: inline-block;
+  }
+
+  + p {
+    margin-top: 0;
+  }
+
+  + ul,
+  + ol {
+    margin-top: 0;
+  }
+}
+
+.centerAlign {
+  text-align: center !important;
+}
+
+.leftAlign {
+  text-align: left !important;
+}
+
+.rightAlign {
+  text-align: right !important;
+}
+
+.spaceBefore {
+  margin-top: 20px !important;
+}
+
+.spaceBeforeCompact {
+  margin-top: 10px !important;
+}
+
+.spaceAfter {
+  margin-bottom: 20px !important;
+}
+
+.spaceAfterCompact {
+  margin-bottom: 10px !important;
+}
+
+ul {
+  &.noBullet {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  left: -20000px;
+  top: -20000px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.codeSnippet {
+  font-family: monospace;
+  background: #eee;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  display: inline-block;
+}

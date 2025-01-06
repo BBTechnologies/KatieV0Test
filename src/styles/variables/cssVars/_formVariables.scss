@@ -1,0 +1,91 @@
+@use '../../themes/monochrome/palette';
+@use '../../shared/partials/colors/tintsAndShades';
+
+$inputHeight: 44px !default;
+$inputPadding: 0 14px !default;
+$inputTransition: none;
+$inputBgColor: #fff !default;
+$inputErrorBgColor: transparent !default;
+$inputFocusBgColor: transparent !default;
+$inputReadonlyBgColor: #{tintsAndShades.$white-10} !default;
+$inputErrorColor: #c00 !default;
+$inputBorderThickness: 1px !default;
+$inputErrorBorderThickness: 1px !default;
+$inputFocusBorderThickness: 1px !default;
+$inputReadonlyBorderThickness: 1px !default;
+$inputReadonlyBorderColor: #{tintsAndShades.$white-10} !default;
+$inputBorderRadius: 4px !default;
+$inputBorderColor: #{tintsAndShades.$black-90} !default;
+$inputErrorBorderColor: #c00 !default;
+$inputFocusBorderColor: #{tintsAndShades.$black-50} !default;
+$inputPlaceholderColor: #{tintsAndShades.$black-90} !default;
+$inputLabelColor: #{tintsAndShades.$black-30} !default;
+$inputLabelFontSize: inherit !default;
+$inputLabelFontWeight: inherit !default;
+$inputValueColor: #{tintsAndShades.$black-30} !default;
+$inputReadonlyColor: #{tintsAndShades.$black-50} !default;
+$inputFocusColor: #{tintsAndShades.$black-10} !default;
+$inputFocusOutlineColor: #{tintsAndShades.$black-10} !default;
+
+$inputFocusOutline: 1px dotted #{$inputFocusOutlineColor} !default;
+$inputHoverOutline: 1px dotted;
+$inputBorder: #{$inputBorderThickness} solid #{$inputBorderColor} !default;
+$inputErrorBorder: #{$inputErrorBorderThickness} solid #{$inputErrorBorderColor} !default;
+$inputReadonlyBorder: #{$inputReadonlyBorderThickness} solid #{$inputReadonlyBorderColor} !default;
+$inputFocusBorder: #{$inputFocusBorderThickness} solid #{$inputFocusBorderColor} !default;
+$mandatorySymbolColor: #c00 !default;
+
+$checkboxBorderColor: #{palette.$palette1-300} !default;
+$checkboxBg: #{tintsAndShades.$white} !default;
+$checkboxFgColor: #{palette.$palette1-300} !default;
+$checkboxIconSize: 20px !default;
+
+$successBg: #00A171 !default;
+$successFgColor: #fff !default;
+
+$errorFgColor: #c00 !default;
+$errorBg: #{tintsAndShades.$white} !default;
+
+:root {
+  --inputTransition: #{$inputTransition};
+  --inputHeight: #{$inputHeight};
+  --inputPadding: #{$inputPadding};
+  --inputBgColor: #{$inputBgColor};
+  --inputErrorBgColor: #{$inputErrorBgColor};
+  --inputErrorColor: #{$inputErrorColor};
+  --inputFocusBgColor: #{$inputFocusBgColor};
+  --inputReadonlyBgColor: #{$inputReadonlyBgColor};
+  --inputBorderThickness: #{$inputBorderThickness};
+  --inputErrorBorderThickness: #{$inputErrorBorderThickness};
+  --inputFocusBorderThickness: #{$inputFocusBorderThickness};
+  --inputReadonlyBorderThickness: #{$inputReadonlyBorderThickness};
+  --inputReadonlyBorderColor: #{$inputReadonlyBorderColor};
+  --inputBorderRadius: #{$inputBorderRadius};
+  --inputBorderColor: #{$inputBorderColor};
+  --inputErrorBorderColor: #{$inputErrorBorderColor};
+  --inputFocusBorderColor: #{$inputFocusBorderColor};
+  --inputPlaceholderColor: #{$inputPlaceholderColor};
+  --inputLabelColor: #{$inputLabelColor};
+  --inputLabelFontSize: #{$inputLabelFontSize};
+  --inputLabelFontWeight: #{$inputLabelFontWeight};
+  --inputValueColor: #{$inputValueColor};
+  --inputReadonlyColor: #{$inputReadonlyColor};
+  --inputFocusColor: #{$inputFocusColor};
+  --inputFocusOutlineColor: #{$inputFocusOutlineColor};
+  --inputFocusOutline: #{$inputFocusOutline};
+  --inputHoverOutline: #{$inputHoverOutline};
+  --inputBorder: #{$inputBorder};
+  --inputErrorBorder: #{$inputErrorBorder};
+  --inputReadonlyBorder: #{$inputReadonlyBorder};
+  --inputFocusBorder: #{$inputFocusBorder};
+  --mandatorySymbolColor: #{$mandatorySymbolColor};
+  --mandatorySymbolContent: '*';
+  --checkboxBorderColor: #{$checkboxBorderColor};
+  --checkboxBg: #{$checkboxBg};
+  --checkboxFgColor: #{$checkboxFgColor};
+  --checkboxIconSize: #{$checkboxIconSize};
+  --successBg: #{$successBg};
+  --successFgColor: #{$successFgColor};
+  --errorFgColor: #{$errorFgColor};
+  --errorBg: #{$errorBg};
+}

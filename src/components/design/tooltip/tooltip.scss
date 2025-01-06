@@ -1,0 +1,191 @@
+@use 'sass:math';
+@use 'tooltipVariables' as tooltipVariables;
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  font-weight: normal;
+  width: var(--tooltipIconSize);
+  height: 1em;
+  margin: var(--toolTipMargin);
+
+  > button.icon_only {
+    background: none;
+    border: none;
+    border-radius: 100%;
+    display: block;
+    min-height: var(--tooltipIconSize);
+    min-width: var(--tooltipIconSize);
+    height: var(--tooltipIconSize);
+    line-height: calc(var(--tooltipIconSize) - 4px);
+    width: var(--tooltipIconSize);
+    position: absolute;
+    left: 0;
+    top: -2px;
+
+    &:hover, &:focus, &:active {
+      width: var(--tooltipIconPlaceHolderWidth) !important;
+      height: var(--tooltipIconPlaceHolderHeight);
+      border-radius: var(--tooltipIconPlaceHolderRadius);
+    }
+
+    &:hover {
+      border: none;
+      background: none;
+    }
+
+    .icon,
+    svg[data-icon] {
+      text-align: center;
+      height: var(--tooltipIconSize);
+      width: var(--tooltipIconSize);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    svg[data-icon] {
+      height: var(--tooltipSvgIconSize);
+      width: var(--tooltipSvgIconSize);
+      line-height: var(--tooltipSvgIconSize);
+    }
+
+    .icon {
+      color: var(--tooltipIconFgColor);
+      background: var(--tooltipIconBg);
+      border-radius: 100%;
+      border: var(--tooltipIconBorder);
+      line-height: normal;
+
+      &.icon-info {
+        &:before {
+          content: 'i';
+          color: var(--tooltipIconFgColor);
+          font-style: normal;
+          font-size: calc(var(--tooltipIconSize) - 4px);
+          font-weight: bold;
+        }
+      }
+    }
+
+    svg[data-icon] {
+      color: var(--tooltipIconBg);
+    }
+  }
+
+  .content {
+    display: none;
+    background: var(--tooltipContentBg);
+    color: var(--tooltipContentFgColor);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 16px;
+    left: 8px - math.div(tooltipVariables.$toolTipWidth, 2);
+    padding: 10px;
+    position: absolute;
+    top: auto;
+    bottom: 28px;
+    z-index: 100;
+    width: var(--tooltipWidth);
+    text-align: left;
+
+    &:before {
+      content: '';
+      border: 8px solid transparent;
+      border-top: 8px solid var(--tooltipContentBg);;
+      border-bottom: none;
+      position: absolute;
+      top: auto;
+      bottom: -8px;
+      left: math.div(tooltipVariables.$toolTipWidth, 2) - 5px;
+    }
+  }
+
+  &.large {
+    .content {
+      width: var(--toolTipWidthLarge);
+      left: 3px - math.div(tooltipVariables.$toolTipWidthLarge, 2);
+
+      &:before {
+        left: math.div(tooltipVariables.$toolTipWidthLarge, 2);
+      }
+    }
+  }
+
+  &:hover,
+  &.isOpen {
+    .content {
+      display: block;
+
+      &:hover {
+        display: none;
+      }
+    }
+  }
+
+  &.measuring {
+    .content {
+      opacity: 1;
+      display: block;
+    }
+  }
+
+  &.shiftLeft {
+    .content {
+      left: 0 - (tooltipVariables.$toolTipWidth - 35);
+      &:before {
+        left: auto;
+        right: 16px;
+      }
+    }
+
+    &.large {
+      .content {
+        left: 0 - (tooltipVariables.$toolTipWidthLarge - 35);
+      }
+    }
+  }
+
+  &.shiftRight {
+    .content {
+      left: -5px;
+      &:before {
+        left: 8px;
+      }
+    }
+
+    &.large {
+      .content {
+        left: -5px;
+      }
+    }
+  }
+
+  &.shiftUp {
+    .content {
+      top: auto;
+      bottom: 28px;
+      &:before {
+        top: auto;
+        bottom: -8px;
+        border-top: 8px solid var(--tooltipContentBg);
+        border-bottom: none;
+      }
+    }
+  }
+
+  &.shiftDown {
+    .content {
+      top: 27px;
+      bottom: auto;
+      &:before {
+        top: -8px;
+        bottom: auto;
+        border-top: none;
+        border-bottom: 8px solid var(--tooltipContentBg);
+      }
+    }
+  }
+}

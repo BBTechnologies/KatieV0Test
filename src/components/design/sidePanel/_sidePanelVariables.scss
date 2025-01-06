@@ -1,0 +1,35 @@
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$sidePanelSizeSmall: 44px !default;
+$sidePanelSizeMedium: 300px !default;
+$sidePanelSizeLarge: 420px !default;
+
+$sidePanelBg: #fff !default;
+$sidePanelFg: #{tintsAndShades.$neutral-20} !default;
+$sidePanelBorder: 1px solid #{tintsAndShades.$neutral-90} !default;
+$sidePanelShadow: none !default;
+$sidePanelPadding: 20px;
+
+$sidePanelCloseButtonBg: #fff !default;
+$sidePanelCloseButtonFg: #{tintsAndShades.$neutral-20} !default;
+$sidePanelCloseButtonBorder: 1px solid #{tintsAndShades.$neutral-90} !default;
+$sidePanelCloseButtonShadow: 0 0 5px 0 #{tintsAndShades.$neutral-90} !default;
+$sidePanelCloseIconColor: #{tintsAndShades.$neutral-20} !default;
+
+@mixin sidePanelVariables {
+  --sidePanelBg: #{$sidePanelBg};
+  --sidePanelFg: #{$sidePanelFg};
+  --sidePanelBorder: #{$sidePanelBorder};
+  --sidePanelPadding: #{$sidePanelPadding};
+  --sidePanelShadow: #{$sidePanelShadow};
+
+  --sidePanelCloseButtonBg: #{$sidePanelCloseButtonBg};
+  --sidePanelCloseButtonFg: #{$sidePanelCloseButtonFg};
+  --sidePanelCloseButtonBorder: #{$sidePanelCloseButtonBorder};
+  --sidePanelCloseButtonShadow: #{$sidePanelCloseButtonShadow};
+  --sidePanelCloseIconColor: #{$sidePanelCloseIconColor};
+
+  --sidePanelSizeSmall: #{$sidePanelSizeSmall};
+  --sidePanelSizeMedium: #{$sidePanelSizeMedium};
+  --sidePanelSizeLarge: #{$sidePanelSizeLarge};
+}

@@ -1,0 +1,252 @@
+@use 'sass:color';
+@use '../../utilities/functions';
+@use '../../utilities/mixins';
+
+/* BUTTONS */
+@mixin baseButtonStyles () {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 500;
+  box-sizing: border-box;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+@mixin defaultButtonStyles () {
+  @include baseButtonStyles();
+  min-width: mixins.$screenTouchSize; // Minimum size for accessibility on touch devices
+  min-height: mixins.$screenTouchSize;
+  border-radius: var(--buttonBorderRadius);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+@mixin smallButtonStyles () {
+  @include baseButtonStyles();
+  min-width: mixins.$screenTouchSize - 12; // Minimum size for accessibility on touch devices
+  min-height: mixins.$screenTouchSize - 12;
+  font-size: 13px;
+  padding: 0 14px;
+}
+
+@mixin textOnlyButtonStyles () {
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+@mixin createButtonSubClasses($classPrefix) {
+  &:hover,
+  &.hover,
+  &:active,
+  &.active {
+    background: var(--#{$classPrefix}ButtonBgHover);
+    border: var(--#{$classPrefix}ButtonBorderHover);
+    color: var(--#{$classPrefix}ButtonFgColorHover);
+  }
+
+  &:focus,
+  &.focus {
+    outline: var(--#{$classPrefix}ButtonFocusOutline) !important;
+  }
+
+  &.inverse {
+    background: var(--#{$classPrefix}ButtonInverseBg);
+    border: var(--#{$classPrefix}ButtonInverseBorder);
+    color: var(--#{$classPrefix}ButtonInverseFgColor);
+
+    &:hover,
+    &.hover,
+    &:active,
+    &.active {
+      background: var(--#{$classPrefix}ButtonInverseBgHover);
+      border: var(--#{$classPrefix}ButtonInverseBorderHover);
+      color: var(--#{$classPrefix}ButtonInverseFgColorHover);
+    }
+
+    &:focus,
+    &.focus {
+      outline: var(--#{$classPrefix}ButtonInverseFocusOutline) !important;
+    }
+
+    &.outline {
+      background: var(--#{$classPrefix}ButtonOutlineInvertStyleBg);
+      border: var(--#{$classPrefix}ButtonOutlineInvertStyleBorder);
+      color: var(--#{$classPrefix}ButtonOutlineInvertStyleFgColor);
+
+      &:hover,
+      &.hover,
+      &:active,
+      &.active {
+        background: var(--#{$classPrefix}ButtonOutlineInvertStyleBgHover);
+        border: var(--#{$classPrefix}ButtonOutlineInvertStyleBorderHover);
+        color: var(--#{$classPrefix}ButtonOutlineInvertStyleFgColorHover);
+      }
+
+      &:focus,
+      &.focus {
+        outline: var(--#{$classPrefix}ButtonOutlineInvertStyleFocusOutline) !important;
+      }
+    }
+  }
+
+  &.outline {
+    background: var(--#{$classPrefix}ButtonOutlineStyleBg);
+    border: var(--#{$classPrefix}ButtonOutlineStyleBorder);
+    color: var(--#{$classPrefix}ButtonOutlineStyleFgColor);
+
+    &:hover,
+    &.hover,
+    &:active,
+    &.active {
+      background: var(--#{$classPrefix}ButtonOutlineStyleBgHover);
+      border: var(--#{$classPrefix}ButtonOutlineStyleBorderHover);
+      color: var(--#{$classPrefix}ButtonOutlineStyleFgColorHover);
+    }
+
+    &:focus,
+    &.focus {
+      outline: var(--#{$classPrefix}ButtonOutlineStyleFocusOutline) !important;
+    }
+  }
+
+  &.disabled,
+  &[disabled] {
+    background: var(--#{$classPrefix}ButtonDisabledBg);
+    border: var(--#{$classPrefix}ButtonDisabledBorder);
+    color: var(--#{$classPrefix}ButtonDisabledFgColor);
+
+    &:hover,
+    &.hover,
+    &:active,
+    &.active {
+      background: var(--#{$classPrefix}ButtonDisabledBgHover);
+      border: var(--#{$classPrefix}ButtonDisabledBorderHover);
+      color: var(--#{$classPrefix}ButtonDisabledFgColorHover);
+    }
+
+    &:focus,
+    &.focus {
+      outline: var(--#{$classPrefix}ButtonDisabledFocusOutline) !important;
+    }
+  }
+
+  &.text_only {
+    color: var(--#{$classPrefix}TextOnlyColor);
+    &:hover,
+    &.hover,
+    &:active,
+    &.active,
+    &:focus,
+    &.focus {
+      color: var(--#{$classPrefix}TextOnlyColor);
+    }
+  }
+}
+
+@mixin createButtonClass($classPrefix) {
+  &.#{$classPrefix} {
+    background: var(--#{$classPrefix}ButtonBg);
+    border: var(--#{$classPrefix}ButtonBorder);
+    color: var(--#{$classPrefix}ButtonFgColor);
+
+    @include createButtonSubClasses(#{$classPrefix});
+  }
+}
+
+@mixin createButtonVariables($classPrefix, $buttonBgColor, $buttonBorderThickness) {
+
+  // Color is dark enough to support white text
+  $buttonFgColor: #fff;
+  $hoverBgColor: color.adjust($buttonBgColor, $lightness: -10%);
+  $hoverFgColor: #fff;
+
+  $buttonOutlineColor: color.adjust($buttonBgColor, $lightness: 40%);
+  $buttonOutlineFgColor: $buttonBgColor;
+  $buttonOutlineHoverColor: color.adjust($buttonBgColor, $lightness: 10%);
+  $buttonOutlineFocusColor: color.adjust($buttonBgColor, $lightness: 35%);
+
+  $invertBgColor: color.adjust($buttonBgColor, $lightness: 45%);
+  $invertFgColor: #222;
+  $invertHoverFgColor: #000;
+  $invertHoverBgColor: color.adjust($buttonBgColor, $lightness: 35%);
+
+  $invertOutlineColor: color.adjust($buttonBgColor, $lightness: -45%);
+  $invertOutlineHoverColor: color.adjust($buttonBgColor, $lightness: -35%);
+  $invertOutlineFocusColor: color.adjust($buttonBgColor, $lightness: -20%);
+
+  @if functions.closerToWhite($buttonBgColor) {
+    $buttonFgColor: #222;
+    $hoverBgColor: color.adjust($buttonBgColor, $lightness: -20%);
+    $hoverFgColor: #000;
+
+    $buttonOutlineColor: color.adjust($buttonBgColor, $lightness: -10%);
+    $buttonOutlineFgColor: color.adjust($buttonBgColor, $lightness: -35%);
+    $buttonOutlineHoverColor: color.adjust($buttonBgColor, $lightness: -45%);
+    $buttonOutlineFocusColor: color.adjust($buttonBgColor, $lightness: -45%);
+
+    $invertBgColor: color.adjust($buttonBgColor, $lightness: -45%);
+    $invertFgColor: #f2f2f2;
+    $invertHoverFgColor: #fff;
+    $invertHoverBgColor: color.adjust($buttonBgColor, $lightness: -35%);
+
+    $invertOutlineColor: color.adjust($buttonBgColor, $lightness: -45%);
+    $invertOutlineHoverColor: color.adjust($buttonBgColor, $lightness: -35%);
+    $invertOutlineFocusColor: color.adjust($buttonBgColor, $lightness: -20%);
+  }
+
+  $disabledButtonBgColor: functions.hexToRgba($buttonBgColor, 0.50);
+  $disabledButtonFgColor: functions.hexToRgba($buttonFgColor, 0.50);
+  $disabledButtonOutlineColor: functions.hexToRgba($buttonBgColor, 0.35);
+
+  --#{$classPrefix}ButtonBg: #{$buttonBgColor};
+  --#{$classPrefix}ButtonBorder: #{$buttonBorderThickness} solid #{$buttonBgColor};
+  --#{$classPrefix}ButtonFgColor: #{$buttonFgColor};
+  --#{$classPrefix}ButtonBgHover: #{$hoverBgColor};
+  --#{$classPrefix}ButtonFgColorHover: #{$hoverFgColor};
+  --#{$classPrefix}ButtonBorderHover: #{$buttonBorderThickness} solid #{$hoverBgColor};
+  --#{$classPrefix}ButtonFocusOutline: #{$buttonBorderThickness} solid #{$buttonOutlineColor};
+
+  --#{$classPrefix}ButtonInverseBg: #{$invertBgColor};
+  --#{$classPrefix}ButtonInverseBorder: #{$buttonBorderThickness} solid #{$invertBgColor};
+  --#{$classPrefix}ButtonInverseFgColor: #{$invertFgColor};
+  --#{$classPrefix}ButtonInverseBgHover: #{$invertHoverBgColor};
+  --#{$classPrefix}ButtonInverseFgColorHover: #{$invertHoverFgColor};
+  --#{$classPrefix}ButtonInverseBorderHover: #{$buttonBorderThickness} solid #{$invertHoverBgColor};
+  --#{$classPrefix}ButtonInverseFocusOutline: #{$buttonBorderThickness} solid #{$invertOutlineFocusColor};
+
+  --#{$classPrefix}ButtonDisabledBg: #{$disabledButtonBgColor};
+  --#{$classPrefix}ButtonDisabledBorder: #{$buttonBorderThickness} solid #{$disabledButtonBgColor};
+  --#{$classPrefix}ButtonDisabledFgColor: #{$disabledButtonFgColor};
+  --#{$classPrefix}ButtonDisabledBgHover: #{$disabledButtonBgColor};
+  --#{$classPrefix}ButtonDisabledFgColorHover: #{$disabledButtonFgColor};
+  --#{$classPrefix}ButtonDisabledBorderHover: #{$buttonBorderThickness} solid #{$disabledButtonBgColor};
+  --#{$classPrefix}ButtonDisabledFocusOutline: #{$buttonBorderThickness} solid #{$disabledButtonOutlineColor};
+
+  --#{$classPrefix}ButtonOutlineStyleBg: transparent;
+  --#{$classPrefix}ButtonOutlineStyleBorder: #{$buttonBorderThickness} solid #{$buttonOutlineColor};
+  --#{$classPrefix}ButtonOutlineStyleFgColor: #{$buttonOutlineFgColor};
+  --#{$classPrefix}ButtonOutlineStyleBgHover: transparent;
+  --#{$classPrefix}ButtonOutlineStyleFgColorHover: #{$buttonOutlineHoverColor};
+  --#{$classPrefix}ButtonOutlineStyleBorderHover: #{$buttonBorderThickness} solid #{$buttonOutlineHoverColor};
+  --#{$classPrefix}ButtonOutlineStyleFocusOutline: #{$buttonBorderThickness} solid #{$buttonOutlineFocusColor};
+
+  --#{$classPrefix}ButtonOutlineInvertStyleBg: transparent;
+  --#{$classPrefix}ButtonOutlineInvertStyleBorder: #{$buttonBorderThickness} solid #{$invertOutlineColor};
+  --#{$classPrefix}ButtonOutlineInvertStyleFgColor: #{$invertOutlineColor};
+  --#{$classPrefix}ButtonOutlineInvertStyleBgHover: transparent;
+  --#{$classPrefix}ButtonOutlineInvertStyleFgColorHover: #{$invertOutlineHoverColor};
+  --#{$classPrefix}ButtonOutlineInvertStyleBorderHover: #{$buttonBorderThickness} solid #{$invertOutlineHoverColor};
+  --#{$classPrefix}ButtonOutlineInvertStyleFocusOutline: #{$buttonBorderThickness} solid #{$invertOutlineFocusColor};
+}
+
+

@@ -1,0 +1,25 @@
+@use '../../../styles/themes/monochrome/palette';
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+@use '../../../styles/shared/partials/typography/typography';
+
+$toolTipWidth: 200px !default;
+$toolTipWidthLarge: 320px !default;
+$toolTipIconSize: 22px !default;
+
+$tooltipIconBg: palette.$palette2 !default;
+$tooltipIconFgColor: palette.$baseTextColor !default;
+$tooltipContentBg: tintsAndShades.$white-20 !default;
+$tooltipContentFgColor: palette.$baseTextColor !default;
+
+@mixin tooltipVariables {
+  --tooltipIconSize: #{$toolTipIconSize};
+  --tooltipSvgIconSize: #{$toolTipIconSize};
+  --tooltipWidth: #{$toolTipWidth};
+  --toolTipWidthLarge: #{$toolTipWidthLarge};
+  --toolTipMargin: 0 5px;
+
+  --tooltipIconBg: #{$tooltipIconBg};
+  --tooltipIconFgColor: #{$tooltipIconFgColor};
+  --tooltipContentBg: #{$tooltipContentBg};
+  --tooltipContentFgColor: #{$tooltipContentFgColor};
+}

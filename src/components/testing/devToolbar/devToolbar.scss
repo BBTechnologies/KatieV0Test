@@ -1,0 +1,29 @@
+@use '../../../styles/shared/utilities/mixins';
+
+#devToolbar {
+  background: #000;
+  color: #fff;
+  z-index: 100000;
+  .devToolbar {
+    padding: 10px;
+    @include mixins.rowLayout($justifyContent: space-between);
+    width: 100%;
+
+    form {
+      .formField.horizontal {
+        margin: 0;
+
+        .labelText,
+        select {
+          background: #000;
+          color: #fff;
+          width: auto;
+        }
+
+        select {
+          height: 30px;
+        }
+      }
+    }
+  }
+}

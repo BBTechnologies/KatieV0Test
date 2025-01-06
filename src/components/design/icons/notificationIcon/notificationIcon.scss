@@ -1,0 +1,20 @@
+.notificationIcon {
+  background: var(--notificationIconBg);
+  color: var(--notificationIconFg);
+  border: var(--notificationIconBorder);
+  box-shadow: var(--notificationIconShadow);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 11px;
+  display: block;
+  text-align: center;
+  position: absolute;
+  flex: none;
+  right: -5px;
+  top: -5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

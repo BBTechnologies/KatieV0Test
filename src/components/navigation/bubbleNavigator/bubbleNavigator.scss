@@ -1,0 +1,285 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use '../../../styles/shared/utilities/mixins';
+@use '../../../styles/shared/utilities/functions';
+@use 'bubbleNavigatorVariables';
+
+@mixin getChildBubblePosition($childBubbleCount, $angleAdjustment) {
+  @for $c from 1 through $childBubbleCount {
+
+    $bubbleDistance: bubbleNavigatorVariables.$halfMainBubbleSize + bubbleNavigatorVariables.$halfChildBubbleSize + bubbleNavigatorVariables.$quarterStickyDotSize;
+    $bubbleAngle: map.get(map.get(bubbleNavigatorVariables.$childBubbleAngles, $childBubbleCount), $c) + $angleAdjustment;
+
+    $stickyDotDistance: bubbleNavigatorVariables.$halfChildBubbleSize + bubbleNavigatorVariables.$quarterStickyDotSize;
+    $stickyDotAngle: $bubbleAngle + 180;
+
+    &:nth-child(#{$c}) {
+      transform: functions.translateAtAngle($bubbleDistance, $bubbleAngle);
+      &:after {
+        transform: functions.translateAtAngle($stickyDotDistance, $stickyDotAngle);
+      }
+    }
+  }
+}
+
+@mixin childBubbleClasses($angleAdjustment: 0) {
+  .childBubbles_1 {
+    .bubble {
+      @include getChildBubblePosition(1, $angleAdjustment)
+    }
+  }
+
+  .childBubbles_2 {
+    .bubble {
+      @include getChildBubblePosition(2, $angleAdjustment)
+    }
+  }
+
+  .childBubbles_3 {
+    .bubble {
+      @include getChildBubblePosition(3, $angleAdjustment)
+    }
+  }
+
+  .childBubbles_4 {
+    .bubble {
+      @include getChildBubblePosition(4, $angleAdjustment)
+    }
+  }
+
+  .childBubbles_5 {
+    .bubble {
+      @include getChildBubblePosition(5, $angleAdjustment)
+    }
+  }
+}
+
+.bubbleNavigator {
+  .bubbleTree {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+
+    .bubbleBranch {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: bubbleNavigatorVariables.$bubbleBranchSize;
+      height: bubbleNavigatorVariables.$bubbleBranchSize;
+
+      .parentBranch {
+        position: fixed;
+        top: 0;
+        width: bubbleNavigatorVariables.$mainBubbleSize;
+        height: bubbleNavigatorVariables.$mainBubbleSize;
+      }
+
+      .bubbleDiagram {
+        position: relative;
+        width: bubbleNavigatorVariables.$mainBubbleSize;
+        height: bubbleNavigatorVariables.$mainBubbleSize;
+      }
+
+      .parentReturnButton {
+        position: absolute;
+        left: 0;
+        width: 120px;
+      }
+
+      @include childBubbleClasses();
+    }
+  }
+
+  &.mainBubbleCount_2 {
+    .bubbleTree {
+      .bubbleBranch {
+        &:nth-child(1) {
+          transform: functions.translateAtAngle(bubbleNavigatorVariables.$mainBubbleSize*0.85, 135);
+        }
+
+        &:nth-child(2) {
+          transform: functions.translateAtAngle(bubbleNavigatorVariables.$mainBubbleSize*0.85, 315);
+          @include childBubbleClasses(60);
+        }
+      }
+    }
+  }
+
+  &.mainBubbleCount_3 {
+    .bubbleTree {
+      .bubbleBranch {
+        &:nth-child(2) {
+          @include childBubbleClasses(45);
+        }
+
+        &:nth-child(3) {
+          @include childBubbleClasses(110);
+        }
+      }
+      }
+  }
+
+  .parentBubble {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .bubble {
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--childBubbleBgColor);
+    background-image: var(--childBubbleBgGradient);
+    outline: 20px solid transparent;
+
+    &:before {
+      animation: var(--childBubbleAnimation);
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 100%;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255, 1), rgba(255,255,255, 0.5) 15%, rgba(255,255,255, 0) 25%);
+    }
+
+    button.bubbleButton {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 100%;
+      color: var(--childBubbleFg);
+      border: none;
+      text-shadow: var(--childBubbleTextShadow);
+      background: none;
+    }
+  }
+
+  .parentBubble {
+    .bubble {
+      color: var(--parentBubbleFg);
+      background: var(--parentBubbleBgColor);
+      background-image: var(--parentBubbleBgGradient);
+      text-shadow: var(--parentBubbleTextShadow);
+      &:before {
+        animation: var(--parentBubbleAnimation);
+      }
+      .parentBubbleContent {
+        @include mixins.columnLayout($justifyContent: center);
+        text-align: center;
+        width: math.round(bubbleNavigatorVariables.$mainBubbleSize*.75);
+        height: math.round(bubbleNavigatorVariables.$mainBubbleSize*.75);
+        .labelText {
+          position: relative;
+          z-index: 5;
+        }
+      }
+    }
+  }
+
+  // Don't give this a height so it doesn't end up on top of main bubble
+  // but can be used to position child bubbles
+  .childBubbles {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 3;
+
+    .bubble {
+      position: absolute;
+      left: 50%;
+      top: bubbleNavigatorVariables.$halfMainBubbleSize;
+      margin: -75px;
+      width: bubbleNavigatorVariables.$childBubbleSize;
+      height: bubbleNavigatorVariables.$childBubbleSize;
+
+      // Sticky dot
+      &:after {
+        content: '';
+        position: absolute;
+        background: bubbleNavigatorVariables.$bubbleStickyDotBg;
+        height: bubbleNavigatorVariables.$bubbleStickyDotSize;
+        border-radius: 100%;
+        width: bubbleNavigatorVariables.$bubbleStickyDotSize;
+        z-index: 4;
+      }
+    }
+
+    button.bubbleButton {
+      width: math.round(bubbleNavigatorVariables.$childBubbleSize*.75);
+      height: math.round(bubbleNavigatorVariables.$childBubbleSize*.75);
+      border-radius: 100%;
+      row-gap: 10px;
+      @include mixins.columnLayout($gap: 10px, $justifyContent: center);
+
+      .bubbleDetails {
+        font-size: 11px;
+        .labelValuePair {
+          @include mixins.rowLayout($gap: 5px, $alignItems: flex-start, $justifyContent: center);
+          .labelText {
+            flex: 1;
+          }
+          .valueText {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes animateBubble {
+  0% {
+    left: 100%;
+    transform: scaleX(50%);
+    opacity: 1;
+  }
+
+  50% {
+    transform: none;
+  }
+
+  65% {
+    opacity: 0.75;
+    transform: scale(75%) translateY(-10px);
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    left: 0;
+    opacity: 0;
+    transform: scale(125%);
+  }
+}
+
+@keyframes glowBubble {
+  0% {
+    transform: scale(50%);
+    opacity: 0;
+  }
+
+  65% {
+    opacity: 0.5;
+    transform: scale(75%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(125%);
+  }
+}

@@ -1,0 +1,108 @@
+import { Canvas, Meta, Controls } from '@storybook/blocks';
+import * as FormFieldStories from './FormField.stories';
+
+<Meta of={ FormFieldStories } />
+
+# FormField: Parent Component
+
+The FormField component renders a FormFieldLabel component and a form input component such as;
+- InputText
+- Select
+- TextArea
+
+It is used as a wrapping component tying a label and input field together and creating a semantic structure that complies with WCAG2AA whilst also supporting a range of styles and interactions.
+
+## Use of React Hook Form
+Form elements in this library have been designed to leverage the [react-hook-form](https://react-hook-form.com/) library. To leverage the full capabilities of the library including the built-in easy to use and extensible validation capabilities, all form elements need to be wrapped in a [hook form provider](https://react-hook-form.com/docs/formprovider) and an HTML form element. The library includes a component [HookFormWrapper](?path=/docs/forms-component-structure-hookformwrapper--docs) to make this easier.
+
+Note: There should only ever be one form element per screen so we recommend including it as a root dom node either via a HookFormWrapper or native HTML form element.
+
+## Simple Example
+
+<Canvas of={FormFieldStories.Simple} />
+
+<Controls />
+
+### Example rendered markup
+The example above will create the following HTML markup. Notice that the label has a for attribute that matches the id of the input. The label also wraps the input element creating an implicit relationship as well.
+
+```
+<div class="formField stacked text_Field">
+  <label id="demo1_label" for="demo1"><span class="labelText ">Demo label 1</span>
+    <span class="inputContainer">
+      <input id="demo1" class="" type="text" value="" name="demo1">
+    </span>
+  </label>
+</div>
+```
+
+## Complex Example
+In the admittedly very ugly example below;
+- the input field
+  - has both a required validator and an email pattern validator.
+  - includes a placeholder
+  - is type="email"
+- the label
+  - has a tooltip
+  - includes a custom screen reader instruction
+
+This example also demonstrates the use of customContent to add either simple text strings or full html elements before and/or after the label and/or input.
+
+<Canvas of={FormFieldStories.Complex} />
+
+```
+<div class=" formField stacked email_Field withValidation ">
+  <label id="demo1_label" for="demo1">
+    <span class="labelText mandatory">
+      <span class="preLabel">
+        <sup>This is the customContent <strong>preLabel</strong></sup>
+      </span>
+      <span class="sr-only">This is an extra instruction for screen reader users.</span>
+      This is the label
+      <span class="tooltip">
+        <button type="button" class="button icon_only" id="demo1_tooltip">
+          <i class="icon icon-wink " role="presentation" aria-hidden="true"></i>
+          <span class="sr-only">This shows on hover, click and keyboard. It can have a custom icon.</span>
+        </button>
+        <span aria-hidden="true" role="presentation" class="content">This shows on hover, click and keyboard. It can have a custom icon.</span>
+      </span>
+      <span class="postLabel">
+        <sup>This is the customContent <strong>postLabel</strong></sup>
+      </span>
+    </span>
+    <span class="inputContainer">
+      <span class="preField">
+        <strong>This is the customContent preField</strong>
+      </span>
+      <input id="demo1" class="" placeholder="fred.flinstone@example.com" required autocomplete="email" type="email" value="" name="demo1">
+      <span class="postField">
+        <em>This is the customContent postField</em>
+      </span>
+    </span>
+  </label>
+</div>
+```
+
+Note: The input element renders with the native required attribute as well as W3C standard autocomplete value to suit the input type. Whilst this field is in an invalid state, the validation messages will not show until the user interacts with the field. At this point the markup will adjust to include the following as a sibling of the span.inputContainer. This maintains the association between its content and the input field ensuring that the error message is read to screen reader users.
+
+### Example of required validation message
+Note: this message shows if the user focuses then blurs out of the field without entering a value.
+
+```
+<span class="validation" id="demo1_errors">
+  <span class="message">
+    <span class="error">This is required</span>
+  </span>
+</span>
+```
+
+### Example of email format validation message
+Note: this message shows if the user enters a value that does not conform with the email pattern regex validation. The library includes a number of standard regexes for you to use for common validators such as emails and passwords. These are defined in src/constants/validationRegex.ts.
+
+```
+<span class="validation" id="demo1_errors">
+  <span class="message">
+    <span class="error">Please enter a valid email address.</span>
+  </span>
+</span>
+```

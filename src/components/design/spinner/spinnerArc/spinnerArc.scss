@@ -1,0 +1,16 @@
+.spinnerArc {
+  color: #000;
+  svg {
+    mask {
+      mask-type: alpha;
+    }
+
+    .spinnerArcMask {
+      fill: #fff;
+    }
+
+    .spinnerArcPath {
+      fill: currentColor;
+    }
+  }
+}

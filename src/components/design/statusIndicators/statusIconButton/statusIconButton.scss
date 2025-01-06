@@ -1,0 +1,43 @@
+@use '../../../../styles/shared/utilities/mixins';
+
+
+
+@keyframes defCon3Flames {
+  from {
+    box-shadow: 0 0 1px 0 var(--statusDefCon3ShadowColor);
+  }
+
+  to {
+    box-shadow: 0 0 8px 0 var(--statusDefCon3ShadowColor);
+  }
+}
+
+.statusIconButton {
+  border: none;
+  background: none;
+  @include mixins.rowLayout();
+  .icon {
+    font-size: 24px;
+  }
+
+  &.defCon3 .icon {
+    background: var(--statusDefCon3Bg);
+    color: var(--statusDefCon3Color);
+    opacity: 1;
+    border-radius: 100%;
+    animation: defCon3Flames 1s ease infinite;
+  }
+
+  &.alert .icon {
+    color: var(--statusAlertColor);
+  }
+  &.warn .icon {
+    color: var(--statusWarnColor);
+  }
+  &.info .icon {
+    color: var(--statusInfoColor);
+  }
+  &.success .icon {
+    color: var(--statusSuccessColor);
+  }
+}

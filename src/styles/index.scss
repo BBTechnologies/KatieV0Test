@@ -1,0 +1,8 @@
+
+@use 'variables/cssVars/layoutVariables';
+@use 'variables/cssVars/designVariables';
+@use 'variables/cssVars/formVariables';
+@use 'variables/cssVars/navigationVariables';
+
+@use 'shared/allPartials';
+@use '../icons/style' with ($icomoon-font-path: "../icons/fonts");

@@ -1,0 +1,14 @@
+@use 'genericVariables';
+@use 'palette';
+
+@use '../../../components/design/chip/chipVariables' with (
+  $chipFontAdjust: 0.9em
+);
+
+@use '../../index';
+
+@use 'buttonVariables';
+
+:root {
+  @include buttonVariables.buttonVariables;
+}

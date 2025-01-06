@@ -1,0 +1,128 @@
+@use '../../../styles/shared/utilities/mixins';
+
+.searchPanelMenu {
+  position: relative;
+
+  .searchPanelMenuTriggers {
+    @include mixins.rowLayout();
+    white-space: nowrap;
+
+    .searchPanelMenuTrigger {
+      &:after {
+        content: '/';
+        margin-left: 10px;
+        text-align: right;
+        display: inline-block;
+      }
+
+      &:last-of-type:after {
+        display: none;
+      }
+    }
+
+    button {
+      background: var(--searchPanelMenuTriggerButtonBg);
+      border: var(--searchPanelMenuTriggerButtonBorder);
+      color: var(--searchPanelMenuTriggerButtonFgColor);
+
+      &:hover {
+        background: var(--searchPanelMenuTriggerButtonBgHover);
+        color: var(--searchPanelMenuTriggerButtonFgColorHover);
+        border: var(--searchPanelMenuTriggerButtonBorderHover);
+      }
+    }
+  }
+
+  .searchPanelMenuPanels {
+    @include mixins.rowLayout();
+    background: var(--searchPanelMenuBg);
+    position: absolute;
+    margin-top: 5px;
+    display: none;
+    border: var(--searchPanelMenuBorder);
+    border-radius: var(--searchPanelMenuBorderRadius);
+    box-shadow: var(--searchPanelMenuBoxShadow);
+
+    &.open {
+      display: flex;
+    }
+
+    .searchPanelMenuContent {
+      @include mixins.columnLayout();
+      width: var(--searchPanelMenuContentWidth);
+      height: var(--searchPanelMenuContentHeight);
+      padding: 10px;
+      box-sizing: border-box;
+      border-left: var(--searchPanelMenuBorder);
+      overflow: auto;
+
+      &:first-of-type {
+        border-left: none;
+      }
+
+      .formField {
+        width: 100%;
+      }
+
+      .searchPanelResultsList,
+      .searchPanelMenuActionButtons {
+        @include mixins.columnLayout();
+        width: 100%;
+
+        button {
+          background: var(--searchPanelMenuContentButtonBg);
+          border: var(--searchPanelMenuContentButtonBorder);
+          color: var(--searchPanelMenuContentButtonFgColor);
+
+          &:hover {
+            background: var(--searchPanelMenuContentButtonBgHover);
+            color: var(--searchPanelMenuContentButtonFgColorHover);
+            border: var(--searchPanelMenuContentButtonBorderHover);
+          }
+
+          width: 100%;
+          justify-content: left;
+
+          .labelText {
+            flex: 1;
+            text-align: left;
+          }
+        }
+      }
+
+      h3 {
+        font-size: 15px;
+      }
+
+      .mainActionButtons {
+        @include mixins.columnLayout($gap: 0);
+        width: 100%;
+        border-top: var(--searchPanelDivider);
+        border-bottom: var(--searchPanelDivider);
+      }
+
+      .searchPanelResults,
+      .searchPanelResultsList,
+      .searchPanelResultsList ul {
+        width: 100%;
+      }
+
+      .searchPanelResults {
+        text-align: center;
+      }
+
+      .searchPanelResultsList {
+        @include mixins.columnLayout($gap: 0);
+        border-bottom: var(--searchPanelDivider);
+      }
+
+      .clearSearchButton {
+        margin-top: 20px;
+
+        .labelText {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

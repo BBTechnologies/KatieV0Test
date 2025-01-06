@@ -1,0 +1,19 @@
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$mainHeaderHeight: 60px !default;
+$mainHeaderBg: #{tintsAndShades.$neutral-95} !default;
+$mainHeaderFgColor: #{tintsAndShades.$neutral-20} !default;
+$mainHeaderPadding: 0 20px !default;
+$mainHeaderBorder: none !default;
+$mainHeaderBorderBottom: 1px solid #{tintsAndShades.$neutral-80} !default;
+$mainHeaderBoxShadow: 0 3px 5px 0 #{tintsAndShades.$neutral-95} !default;
+
+@mixin mainHeaderVariables {
+  --mainHeaderHeight: #{$mainHeaderHeight};
+  --mainHeaderBg: #{$mainHeaderBg};
+  --mainHeaderFgColor: #{$mainHeaderFgColor};
+  --mainHeaderPadding: #{$mainHeaderPadding};
+  --mainHeaderBorder: #{$mainHeaderBorder};
+  --mainHeaderBorderBottom: #{$mainHeaderBorderBottom};
+  --mainHeaderBoxShadow: #{$mainHeaderBoxShadow};
+}

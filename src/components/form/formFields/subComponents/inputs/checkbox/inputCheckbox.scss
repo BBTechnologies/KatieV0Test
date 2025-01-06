@@ -1,0 +1,57 @@
+@use '../../../../../../styles/shared/utilities/mixins';
+
+.checkBoxField {
+  label {
+    @include mixins.rowLayout();
+
+    .labelText {
+      cursor: pointer;
+    }
+  }
+
+  .inputContainer {
+    position: relative;
+    display: flex;
+    height: 100%;
+
+    input[type=checkbox] {
+      opacity: 0.01;
+      position: absolute;
+      z-index: 2;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      left: 0;
+      top: 0;
+      margin: 0;
+
+      ~ .checkboxIcons {
+        .icon {
+          font-size: 24px;
+        }
+
+        .icon-checkbox-unchecked {
+          display: block;
+        }
+
+        .icon-checkbox-checked {
+          display: none;
+        }
+      }
+
+      &[checked],
+      &:checked {
+        ~ .checkboxIcons {
+          .icon-checkbox-unchecked {
+            display: none;
+          }
+          .icon-checkbox-checked {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,34 @@
+.rotate svg {
+  animation: rotate 1s linear infinite;
+}
+
+.rotate-steps-12 svg {
+  animation: rotate 1s steps(12) infinite;
+}
+
+.spinner {
+  color: currentColor;
+  position: relative;
+
+  &.spinner_xs svg {
+    width: 20px;
+    height: 20px;
+  }
+  &.spinner_s svg {
+    width: 30px;
+    height: 30px;
+  }
+  &.spinner_m svg {
+    width: 45px;
+    height: 45px;
+  }
+  &.spinner_l svg {
+    width: 65px;
+    height: 65px;
+  }
+  &.spinner_xl svg {
+    width: 100px;
+    height: 100px;
+  }
+}
+

@@ -1,0 +1,57 @@
+@use '../../../styles/shared/utilities/mixins';
+@use 'tabVariables' as tabVariables;
+
+.tabGroup {
+  .tabControls {
+    @include mixins.rowLayout($gap: 1px);
+
+    .tabControl {
+      padding: var(--tabControlPadding);
+      height: var(--tabControlHeight);
+      border: var(--tabControlBorder);
+      border-bottom: var(--tabControlBottomBorder);
+      border-radius: var(--tabControlBorderRadius);
+      box-shadow: var(--tabControlShadow);
+      background: var(--tabControlBg);
+      color: var(--tabControlFgColor);
+      text-decoration: none;
+
+      .icon {
+
+      }
+
+      .notificationIcon {
+
+      }
+
+      &.active {
+        padding: var(--tabControlActivePadding);
+        height: var(--tabControlActiveHeight);
+        border: var(--tabControlActiveBorder);
+        border-bottom: var(--tabControlActiveBottomBorder);
+        border-radius: var(--tabControlActiveBorderRadius);
+        box-shadow: var(--tabControlActiveShadow);
+        background: var(--tabControlActiveBg);
+        color: var(--tabControlActiveFgColor);
+      }
+    }
+  }
+
+  .tabPanels {
+    margin-top: (0-(tabVariables.$tabContentBorderWidth));
+
+    .tabPanel {
+      padding: var(--tabContentPadding);
+      background: var(--tabContentBg);
+      color: var(--tabContentFgColor);
+      box-shadow: var(--tabContentShadow);
+      border: var(--tabContentBorder);
+      border-radius: var(--tabContentBorderRadius);
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}

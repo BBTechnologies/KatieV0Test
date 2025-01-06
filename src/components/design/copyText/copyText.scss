@@ -1,0 +1,21 @@
+.copyText {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  .textArea {
+    resize: none;
+    width: 100%;
+    flex-basis: 0%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    user-select: none;
+    font-size: medium;
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    background-color: rgb(243, 243, 243);
+  }
+}

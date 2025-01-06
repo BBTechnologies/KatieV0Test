@@ -1,0 +1,26 @@
+@use '../../../../../../../styles/shared/utilities/mixins';
+
+.styledRadiosGroup {
+  legend {
+    display: block;
+    margin: 0 0 10px;
+  }
+
+  .radioInputs {
+    @include mixins.rowLayout();
+
+    .labelText {
+      @include mixins.rowLayout();
+    }
+  }
+
+  .styledRadioInput {
+    .inputContainer {
+      position: absolute;
+      opacity: 0.01;
+      width: 1px;
+      display: block;
+      flex: none;
+    }
+  }
+}

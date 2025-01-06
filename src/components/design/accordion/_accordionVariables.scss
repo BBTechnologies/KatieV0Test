@@ -1,0 +1,47 @@
+@use '../../../styles/themes/monochrome/palette';
+@use '../../../styles/shared/partials/colors/tintsAndShades';
+
+$accordionHeaderFont: serif !default;
+$accordionHeaderFontSize: 21px !default;
+$accordionHeaderFontWeight: bold !default;
+$accordionBorder: 1px solid palette.$palette1 !default;
+$accordionHeaderBg: palette.$inverseTextColor !default;
+$accordionHeaderFg: palette.$baseTextColor !default;
+$accordionHeaderBorderRadius: 3px 3px 0 0 !default;
+$accordionHeaderBorder: 1px solid palette.$palette1 !default;
+$accordionHeaderBoxShadow: none !default;
+$accordionHeaderIconColor: palette.$baseTextColor !default;
+
+@mixin accordionVariables {
+  --accordionWidth: 100%;
+
+  --accordionMargin: 0 0 20px;
+  --accordionPadding: 20px;
+
+  --accordionHeaderHeight: 60px;
+  --accordionHeaderFont: #{$accordionHeaderFont};
+  --accordionHeaderFontSize: #{$accordionHeaderFontSize};
+  --accordionHeaderFontWeight: #{$accordionHeaderFontWeight};
+
+  --accordionHeaderBg: #{$accordionHeaderBg};
+  --accordionHeaderFg: #{$accordionHeaderFg};
+  --accordionHeaderBorder: #{$accordionHeaderBorder};
+  --accordionHeaderBorderRadius: #{$accordionHeaderBorderRadius};
+  --accordionHeaderBoxShadow: #{$accordionHeaderBoxShadow};
+  --accordionHeaderIconColor: #{$accordionHeaderIconColor};
+
+  --accordionBg: transparent;
+
+  --accordionBorder: #{$accordionBorder};
+  --accordionBorderRadius: 5px;
+  --accordionFixedBorder: none;
+  --accordionFixedBorderRadius: 0;
+
+  --accordionFixedHeaderWidth: auto;
+  --accordionFixedHeaderHeight: auto;
+  --accordionFixedHeaderBg: #{$accordionHeaderBg};
+  --accordionFixedHeaderFgColor: #{$accordionHeaderFg};
+  --accordionFixedHeaderBorder: none;
+
+  --accordionCustomHeaderPadding: 0 0 10px;
+}

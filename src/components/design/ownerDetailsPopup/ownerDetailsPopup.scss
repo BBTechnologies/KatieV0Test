@@ -1,0 +1,33 @@
+@use '../../../styles/shared/utilities/mixins';
+
+.ownerDetailsPopup {
+  position: relative;
+  opacity: 0.01;
+  z-index: 20;
+
+  .button.icon_only {
+    width: 32px;
+    margin: -16px 0;
+    padding: 0;
+    position: absolute;
+  }
+
+  .ownerDetails {
+    @include mixins.columnLayout($gap: 5px);
+    position: absolute;
+    display: none;
+    font-size: 13px;
+    background: #a8bcc9;
+    color: #222;
+    padding: 10px;
+    border-radius: 3px;
+    left: 0;
+    top: -92px;
+  }
+
+  &.detailsShowing {
+    .ownerDetails {
+      display: flex;
+    }
+  }
+}

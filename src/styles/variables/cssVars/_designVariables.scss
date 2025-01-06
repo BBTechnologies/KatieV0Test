@@ -1,0 +1,19 @@
+@use '../../../components/design/accordion/accordionVariables';
+@use '../../../components/design/chip/chipVariables';
+@use '../../../components/design/banners/pageBanner/pageBannerVariables';
+@use '../../../components/design/tooltip/tooltipVariables';
+@use '../../../components/design/dialog/dialogVariables';
+@use '../../../components/design/icons/notificationIcon/notificationIconVariables';
+@use '../../../components/design/tabs/tabVariables';
+@use '../../../components/design/statusIndicators/statusIndicatorsVariables';
+
+:root {
+  @include accordionVariables.accordionVariables;
+  @include chipVariables.chipVariables;
+  @include pageBannerVariables.pageBannerVariables;
+  @include tooltipVariables.tooltipVariables;
+  @include dialogVariables.dialogVariables;
+  @include tabVariables.tabVariables;
+  @include statusIndicatorsVariables.statusIndicatorsVariables;
+  @include notificationIconVariables.notificationIconVariables;
+}

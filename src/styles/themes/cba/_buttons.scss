@@ -1,0 +1,16 @@
+@use 'sass:math';
+@use '../../shared/partials/buttons/buttonVariables';
+@use '../../shared/utilities/mixins';
+@use "palette";
+
+$buttonBorderRadius: math.div(mixins.$screenTouchSize, 2);
+$buttonSidesPadding: 24px;
+$buttonBorderThickness: 1px;
+$useColoredOutlines: false;
+
+@include buttonVariables.autoButtonVariables (
+    palette.$primaryButtonBg,
+    palette.$secondaryButtonBg,
+    palette.$tertiaryButtonBg,
+    $borderThickness: $buttonBorderThickness
+);

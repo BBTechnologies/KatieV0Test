@@ -1,0 +1,41 @@
+@use '../../../styles/shared/utilities/mixins';
+
+.headerBar {
+  @include mixins.rowLayout($justifyContent: space-between);
+  position: relative;
+
+  > .icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    font-size: 30px;
+  }
+
+  &.withNotification {
+  }
+
+  &.withLeftIcon {
+    padding-left: 50px;
+
+    .icon:first-of-type {
+      left: 0;
+    }
+  }
+
+  &.withRightIcon {
+    padding-right: 50px;
+
+    .icon:last-of-type {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  h2 {
+    @include mixins.overflowText;
+  }
+
+  .headerButtons {
+    @include mixins.rowLayout($gap: 5px);
+  }
+}
