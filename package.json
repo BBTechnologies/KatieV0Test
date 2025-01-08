@@ -52,7 +52,6 @@
     "@jest/types": "^29.6.3",
     "@mdx-js/mdx": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@repo/eslint-config": "workspace:*",
     "@storybook/addon-a11y": "^8.2.8",
     "@storybook/addon-actions": "^8.2.8",
     "@storybook/addon-docs": "^8.4.7",
