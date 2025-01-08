@@ -1,5 +1,9 @@
 {
-  "name": "@repo/x15-ui-library",
+  "name": "@BBTechnologies/katiev0test",
+  "version": "1.0.0",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "description": "Collection of UI resources for development",
   "main": "index.js",
   "files": [
