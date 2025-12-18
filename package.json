@@ -39,7 +39,7 @@
     "react-hook-form": "^7.53.0",
     "run-func": "^3.0.0",
     "sass": "^1.79.4",
-    "storybook": "^8.3.5",
+    "storybook": "^8.6.15",
     "use-debounce": "^10.0.3"
   },
   "devDependencies": {
